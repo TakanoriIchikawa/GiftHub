@@ -1,6 +1,6 @@
 <template>
     <div>
-    <sidebar-component></sidebar-component>
+        <sidebar-component></sidebar-component>
         <div class="c-wrapper c-fixed-components">
         <header-component></header-component>
             <div class="c-body">
@@ -11,7 +11,7 @@
 
                     </div>
                 </main>
-            <footer-component></footer-component>
+                <footer-component></footer-component>
             </div>
         </div>
     </div>
