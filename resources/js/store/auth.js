@@ -1,9 +1,9 @@
 const state = {
-    user: null
+    user: {}
 }
 
 const getters = {
-    check: state => !! state.user,
+    check: state => state.user.name ? true : false,
     name: state => state.user.name ? state.user.name : '',
     email: state => state.user.email ? state.user.email : '',
 }
@@ -11,37 +11,45 @@ const getters = {
 const mutations = {
     setUser (state, user) {
         state.user = user
-        console.log('通過です。setUser')
-        console.log(state.user)
     }
 }
 
 const actions = {
     async register (context, data) {
-        data.userToken = 'chiachia0223'
-        var user = {
-            name: data.name,
-            email: data.email,
-            userToken: data.userToken,
-        }
-        context.commit('setUser', user)
+        return await axios.post('/api/register', data)
+        .then ( response => {
+            context.commit('setUser', response.data);
+            return true;
+        }).catch( error => { 
+            console.log(error);
+            return false;
+        })
     },
     async login (context, data) {
-        var user = {
-            loginId: data.loginId,
-            userToken: data.userToken,
-        }
-        context.commit('setUser', user)
+        return await axios.post('/api/login', data)
+        .then ( response => {
+            context.commit('setUser', response.data);
+            return true;
+        }).catch( error => { 
+            console.log(error);
+            return false;
+        })
     },
     async logout (context) {
-        
+        await axios.post('/api/logout')
+        .then ( response => {
+            context.commit('setUser', {})
+        }).catch( error => { 
+            console.log(error);
+        })
     },
     async currentUser (context) {
-        var user = {
-            name: '市川千耀',
-            email: 'axela0104@icloud.com',
-        }
-        context.commit('setUser', user)
+        await axios.post('/api/user')
+        .then ( response => {
+            context.commit('setUser', response.data)
+        }).catch( error => { 
+            console.log(error);
+        })
     },
 }
 

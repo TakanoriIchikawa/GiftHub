@@ -1,4 +1,3 @@
-// Bootstrap
 require('./bootstrap');
 // Coreui
 require('./coreui.bundle.min.js');
@@ -7,9 +6,7 @@ require('./coreui.bundle.min.js');
 import Vue from 'vue';
 import router from './router/index.js';
 import store from './store/index.js';
-window.state = store.state;
-
-Vue.component('app-component', require('./components/Layouts/AppComponent.vue').default);
+// window.state = store.state;
 
 const newApp = async () => {
     await store.dispatch('auth/currentUser')

@@ -1,4 +1,9 @@
 <template>
+<div class="c-wrapper c-fixed-components">
+<div class="c-body">
+<main class="c-main">
+<div class="container fade-in">
+
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card mx-4">
@@ -31,7 +36,7 @@
                                 </svg>
                             </span>
                         </div>
-                        <input class="form-control" type="text" v-model="user.logonId" placeholder="User ID">
+                        <input class="form-control" type="text" v-model="user.login_id" placeholder="User ID">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -61,9 +66,12 @@
                                 </svg>
                             </span>
                         </div>
-                        <input class="form-control" type="password" v-model="user.passwordConfirmation" placeholder="Repeat password">
+                        <input class="form-control" type="password" v-model="user.password_confirmation" placeholder="Repeat password">
                     </div>
                     <button class="btn btn-block btn-success" type="submit">Create Account</button>
+                    <div v-if="register_failed" class="text-danger font-weight-bold p-1">
+                        会員登録に失敗しました。
+                    </div>
                 </div>
             </form>
             <div class="card-footer p-4">
@@ -83,22 +91,32 @@
         </div>
     </div>
 </div>
+
+</div>
+</main>
+</div>
+</div>
 </template>
 
 <script>
 
 export default {
     methods: {
-        register: function() {
+        register: async function() {
             // authストアのresigterアクションを呼び出す
-            this.$store.dispatch('auth/register', this.user)
-
-            this.$router.push('/test1')
+            var result = await this.$store.dispatch('auth/register', this.user)
+            console.log(result)
+            if (result) {
+                this.$router.push('/')
+            } else {
+                this.register_failed = true
+            }
         },
     },
     data() {
         return {
-            user: {}
+            user: {},
+            register_failed: false
         }
     },
 }

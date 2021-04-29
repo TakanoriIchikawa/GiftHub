@@ -15,7 +15,7 @@
 <body>
 
 <div class="" id="app">
-    <app-component></app-component>
+    <router-view></router-view>
 </div>
 
 <!-- Scripts -->

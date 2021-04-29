@@ -93,7 +93,7 @@
                         <use xlink:href="assets/coreui.icon.svg#cil-lock-locked"></use>
                         </svg> Lock Account
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="#" @click.prevent.stop="logout()">
                         <svg class="c-icon mr-2">
                         <use xlink:href="assets/coreui.icon.svg#cil-account-logout"></use>
                         </svg> Logout
@@ -111,3 +111,15 @@
 </header>
 
 </template>
+
+<script>
+
+export default {
+    methods: {
+        logout: async function() {
+            await this.$store.dispatch('auth/logout')
+            this.$router.push('/login')
+        }
+    }
+}
+</script>

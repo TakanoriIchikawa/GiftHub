@@ -1,4 +1,9 @@
 <template>
+<div class="c-wrapper c-fixed-components">
+<div class="c-body">
+<main class="c-main">
+<div class="container fade-in">
+
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card-group">
@@ -15,7 +20,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input class="form-control" v-model="user.logonId" type="text" placeholder="User ID">
+                            <input class="form-control" v-model="user.login_id" type="text" placeholder="User ID">
                         </div>
                         <div class="input-group mb-4">
                             <div class="input-group-prepend">
@@ -35,6 +40,9 @@
                                 <button class="btn btn-link px-0" type="button">Forgot password?</button>
                             </div>
                         </div>
+                        <div v-if="login_failed" class="text-danger font-weight-bold p-1">
+                            ユーザーIDまたはパスワードを確認してください。
+                        </div>
                     </div>
                 </form>
             </div>
@@ -52,21 +60,32 @@
         </div>
     </div>
 </div>
+
+</div>
+</main>
+</div>
+</div>
 </template>
 
 <script>
 
 export default {
     methods: {
-        async login() {
-            await this.$store.dispatch('auth/login', this.user)
+        login: async function() {
+            var result = await this.$store.dispatch('auth/login', this.user)
 
-            this.$router.push('/')
+            console.log(result)
+            if (result) {
+                this.$router.push('/')
+            } else {
+                this.login_failed = true
+            }
         }
     },
     data() {
         return {
-            user: {}
+            user: {},
+            login_failed: false,
         }
     },
 }
