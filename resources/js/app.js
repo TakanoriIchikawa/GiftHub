@@ -1,15 +1,16 @@
-// Bootstrap
-require('./bootstrap');
-// Coreui
-require('./coreui.bundle.min.js');
+import './bootstrap'
+import './coreui/coreui.bundle.min.js'
+import './validate/index.js';
 
 // window.Vue = require('vue');
-import Vue from 'vue'
-import router from './router'
+// window.state = store.state;
 
-Vue.component('app-component', require('./components/Layouts/AppComponent.vue').default);
+import Vue from 'vue';
+import router from './router/index.js';
+import store from './store/index.js';
 
 const app = new Vue({
     el: '#app',
-    router: router
+    router,
+    store,
 });

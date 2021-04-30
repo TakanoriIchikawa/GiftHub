@@ -1,6 +1,6 @@
 <template>
     <div>
-    <sidebar-component></sidebar-component>
+        <sidebar-component></sidebar-component>
         <div class="c-wrapper c-fixed-components">
         <header-component></header-component>
             <div class="c-body">
@@ -11,25 +11,22 @@
 
                     </div>
                 </main>
-            <footer-component></footer-component>
+                <footer-component></footer-component>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import SidebarComponent from './SidebarComponent.vue'
-import HeaderComponent from './HeaderComponent.vue'
-import FooterComponent from './FooterComponent.vue'
+import Sidebar from './Sidebar.vue'
+import Header from './Header.vue'
+import Footer from './Footer.vue'
 
 export default {
     components: {
-        'sidebar-component': SidebarComponent,
-        'header-component': HeaderComponent,
-        'footer-component': FooterComponent,
+        'sidebar-component': Sidebar,
+        'header-component': Header,
+        'footer-component': Footer,
     },
-    mounted() {
-        console.log('Component mounted.')
-    }
 }
 </script>
