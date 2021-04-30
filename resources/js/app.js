@@ -1,6 +1,6 @@
 import './bootstrap'
-import './coreui/coreui.bundle.min.js'
-import './validate/index.js';
+import './plugin/coreui.js'
+import './plugin/validate.js';
 
 // window.Vue = require('vue');
 // window.state = store.state;
