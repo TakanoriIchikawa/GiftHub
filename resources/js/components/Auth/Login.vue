@@ -72,9 +72,8 @@
 export default {
     methods: {
         login: async function() {
+            await this.$store.dispatch('auth/logout')
             var result = await this.$store.dispatch('auth/login', this.user)
-
-            console.log(result)
             if (result) {
                 this.$router.push('/')
             } else {

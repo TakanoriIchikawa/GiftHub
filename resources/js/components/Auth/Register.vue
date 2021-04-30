@@ -103,9 +103,8 @@
 export default {
     methods: {
         register: async function() {
-            // authストアのresigterアクションを呼び出す
+            await this.$store.dispatch('auth/logout')
             var result = await this.$store.dispatch('auth/register', this.user)
-            console.log(result)
             if (result) {
                 this.$router.push('/')
             } else {

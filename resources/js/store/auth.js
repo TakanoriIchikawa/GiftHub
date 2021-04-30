@@ -43,14 +43,6 @@ const actions = {
             console.log(error);
         })
     },
-    async currentUser (context) {
-        await axios.post('/api/user')
-        .then ( response => {
-            context.commit('setUser', response.data)
-        }).catch( error => { 
-            console.log(error);
-        })
-    },
 }
 
 export default {
@@ -58,5 +50,5 @@ export default {
     state,
     getters,
     mutations,
-    actions
+    actions,
 }

@@ -8,14 +8,8 @@ import router from './router/index.js';
 import store from './store/index.js';
 // window.state = store.state;
 
-const newApp = async () => {
-    await store.dispatch('auth/currentUser')
-
-    const app = new Vue({
-        el: '#app',
-        router,
-        store,
-    });
-}
-
-newApp()
+const app = new Vue({
+    el: '#app',
+    router,
+    store,
+});

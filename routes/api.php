@@ -21,6 +21,3 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-
-// ユーザー情報取得
-Route::post('/user', 'Auth\UserController@currentUser')->name('user');
