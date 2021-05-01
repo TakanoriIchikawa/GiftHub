@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "@coreui/coreui": "^3.4.0",
+        "@coreui/icons": "^2.0.1",
+        "@coreui/vue": "^3.2.9",
         "@fortawesome/fontawesome-free": "^5.15.3",
         "@popperjs/core": "^2.9.2",
         "perfect-scrollbar": "^1.5.0",

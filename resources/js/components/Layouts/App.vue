@@ -1,32 +1,43 @@
 <template>
-    <div>
-        <sidebar-component></sidebar-component>
-        <div class="c-wrapper c-fixed-components">
-        <header-component></header-component>
-            <div class="c-body">
-                <main class="c-main">
-                    <div class="container fade-in">
-
-                        <router-view></router-view>
-
-                    </div>
-                </main>
-                <footer-component></footer-component>
-            </div>
-        </div>
-    </div>
+  <div class="c-app">
+    <sidebar-component></sidebar-component>
+    <CWrapper>
+      <header-component></header-component>
+      <div class="c-body">
+        <main class="c-main">
+          <CContainer fluid>
+            <transition name="fade" mode="out-in">
+              <router-view :key="$route.path"></router-view>
+            </transition>
+          </CContainer>
+        </main>
+      </div>
+      <footer-component></footer-component>
+    </CWrapper>
+  </div>
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue'
-import Header from './Header.vue'
-import Footer from './Footer.vue'
+import Sidebar from './Sidebar'
+import Header from './Header'
+import Footer from './Footer'
 
 export default {
     components: {
         'sidebar-component': Sidebar,
         'header-component': Header,
         'footer-component': Footer,
-    },
+    }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
