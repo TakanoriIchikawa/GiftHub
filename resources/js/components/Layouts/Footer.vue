@@ -1,6 +1,12 @@
 <template>
-<footer class="c-footer">
-    <div><a href="https://coreui.io">CoreUI</a> © 2020 creativeLabs.</div>
-    <div class="ml-auto">Powered by&nbsp;<a href="https://coreui.io/">CoreUI</a></div>
-</footer>
+  <CFooter :fixed="false">
+    <div>
+      <a href="https://coreui.io" target="_blank">CoreUI</a>
+      <span class="ml-1">&copy; {{new Date().getFullYear()}} creativeLabs.</span>
+    </div>
+    <div class="mfs-auto">
+      <span class="mr-1" target="_blank">Powered by</span>
+      <a href="https://coreui.io/vue">CoreUI for Vue</a>
+    </div>
+  </CFooter>
 </template>

@@ -1,9 +1,15 @@
+// 認証系コンポーネント
 import Register from '../components/Auth/Register.vue';
 import Login from '../components/Auth/Login.vue';
+
+// 親コンポーネント
 import App from '../components/Layouts/App.vue'
 
-import test1 from '../components/test1.vue';
-import test2 from '../components/test2.vue';
+// 子コンポーネント
+import ItemA from '../components/Theme/ItemA.vue';
+import ItemB from '../components/Theme/ItemB.vue';
+import FreeItemA from '../components/Free/FreeItem/FreeItemA.vue';
+import FreeItemB from '../components/Free/FreeItem/FreeItemB.vue';
 
 
 const routes = [
@@ -19,23 +25,55 @@ const routes = [
     },
     {
         path: '/',
+        redirect: '/item-a',
+        name: 'Home',
         component: App,
         children: [
             {
-                path: '/test1',
-                name: test1,
-                component: test1,
+                path: 'item-a',
+                name: 'ItemA',
+                component: ItemA,
                 meta: {
                     requiresAuth: true,
                 },
             },
             {
-                path: '/test2',
-                name: test2,
-                component: test2,
+                path: 'item-b',
+                name: 'ItemB',
+                component: ItemB,
                 meta: {
                     requiresAuth: true,
                 },
+            },
+            {
+                path: 'group',
+                redirect: '/group/free-item-a',
+                meta: {
+                    label: 'Group'
+                },
+                component: {
+                    render(c) {
+                        return c('router-view')
+                    }
+                },
+                children: [
+                    {
+                        path: 'free-item-a',
+                        name: 'FreeItemA',
+                        component: FreeItemA,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
+                    {
+                        path: 'free-item-b',
+                        name: 'FreeItemB',
+                        component: FreeItemB,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    }
+                ]
             },
         ],
     },
