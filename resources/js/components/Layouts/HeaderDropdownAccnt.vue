@@ -9,8 +9,8 @@
       <CHeaderNavLink>
         <div class="c-avatar">
           <img
-            src="assets/img/avatars/3.jpg"
-            class="c-avatar-img "
+            src="/assets/img/avatars/3.jpg"
+            class="c-avatar-img"
           />
         </div>
       </CHeaderNavLink>
@@ -70,7 +70,7 @@ export default {
     methods: {
         logout: async function() {
             await this.$store.dispatch('auth/logout')
-            this.$router.push('/login')
+            this.$router.push({name:'Login'})
         }
   },
   data () {

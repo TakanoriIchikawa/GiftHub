@@ -21,3 +21,7 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/get/prize/categories', 'Api\PrizeCategoryController@getPrizeCategories')->name('get.prize.categories');
+
+Route::get('/get/prizes', 'Api\PrizeController@getPrizes')->name('get.prizes');

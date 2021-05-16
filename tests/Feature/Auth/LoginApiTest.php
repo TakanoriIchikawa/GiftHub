@@ -19,7 +19,7 @@ class LoginApiTest extends TestCase
 
     /**
      * createTestUser function
-     * テスト用ユーザーの作成
+     * テストデータの作成
      * @return oblect
      */
     protected function createTestUser(): object

@@ -27,7 +27,7 @@ export default {
         'sidebar-component': Sidebar,
         'header-component': Header,
         'footer-component': Footer,
-    }
+    },
 }
 </script>
 
