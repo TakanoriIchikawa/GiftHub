@@ -19,7 +19,7 @@ class LogoutApiTest extends TestCase
 
     /**
      * createTestUser function
-     * テスト用ユーザーの作成
+     * テストデータの作成
      * @return object
      */
     protected function createTestUser(): object

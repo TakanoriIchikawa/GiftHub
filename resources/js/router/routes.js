@@ -10,17 +10,18 @@ import ItemA from '../components/Theme/ItemA.vue';
 import ItemB from '../components/Theme/ItemB.vue';
 import FreeItemA from '../components/Free/FreeItem/FreeItemA.vue';
 import FreeItemB from '../components/Free/FreeItem/FreeItemB.vue';
-
+import PrizeCategories from '../components/Prize/PrizeCategories.vue';
+import Prizes from '../components/Prize/Prizes.vue';
 
 const routes = [
     {
         path: '/register',
-        name: Register,
+        name: 'Register',
         component: Register,
     },
     {
         path: '/login',
-        name: Login,
+        name: 'Login',
         component: Login,
     },
     {
@@ -73,6 +74,36 @@ const routes = [
                             requiresAuth: true,
                         },
                     }
+                ]
+            },
+            {
+                path: 'prize',
+                redirect: '/prize/category',
+                meta: {
+                    label: 'Prize'
+                },
+                component: {
+                    render(c) {
+                        return c('router-view')
+                    }
+                },
+                children: [
+                    {
+                        path: 'category',
+                        name: 'Category',
+                        component: PrizeCategories,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
+                    {
+                        path: ':prize_category_path',
+                        name: 'Prizes',
+                        component: Prizes,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
                 ]
             },
         ],

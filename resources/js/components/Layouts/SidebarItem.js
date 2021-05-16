@@ -66,30 +66,64 @@ export default [
             },
             {
                 _name: 'CSidebarNavDropdown',
-                name: 'Free Item',
-                route: '#',
-                icon: 'cil-bolt',
+                name: 'Prize',
+                route: '/prize',
+                icon: 'cil-gift',
                 items: [
                     {
-                        name: 'Free Item',
-                        to: '#'
+                        name: 'Category',
+                        to: '/prize/category',
                     },
                     {
-                        name: 'Free Item',
-                        to: '#'
+                        name: 'Baby',
+                        to: {
+                            name: 'Prizes',
+                            params: {
+                                prize_category_id:1,
+                                prize_category_path:'baby',
+                                prize_category_name:'Baby',
+                            },
+                        },
+                        badge: {
+                            color: 'primary',
+                            text: 'NEW',
+                            shape: 'pill'
+                        },
                     },
-                ]
+                    {
+                        name: 'Kids',
+                        to: {
+                            name: 'Prizes',
+                            params: {
+                                prize_category_id:2,
+                                prize_category_path:'kids',
+                                prize_category_name:'Kids',
+                            },
+                        },
+                    },
+                    {
+                        name: 'Sweees',
+                        to: {
+                            name: 'Prizes',
+                            params: {
+                                prize_category_id:3,
+                                prize_category_path:'sweets',
+                                prize_category_name:'Sweets',
+                            },
+                        },
+                    },
+                ],
             },
             {
                 _name: 'CSidebarNavItem',
                 name: 'Free Item',
                 to: '#',
-                icon: 'cil-diamond',
+                icon: 'cil-bolt',
                 badge: {
                     color: 'primary',
                     text: 'NEW',
                     shape: 'pill'
-                }
+                },
             },
             {
                 _name: 'CSidebarNavDivider',
@@ -101,7 +135,7 @@ export default [
             },
             {
                 _name: 'CSidebarNavDropdown',
-                name: 'Applicationsicon',
+                name: 'App Configuration',
                 route: '/code',
                 icon: 'cil-applications',
                 items: [
@@ -124,11 +158,6 @@ export default [
                         name: 'AWS',
                         to: '#',
                         icon: 'cib-amazon-aws',
-                    },
-                    {
-                        name: 'Github',
-                        to: '#',
-                        icon: 'cib-github',
                     },
                 ]
             },
