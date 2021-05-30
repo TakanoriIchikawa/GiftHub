@@ -20,21 +20,22 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('chiaki0223'),
             ],
             [
-                'name' => '市川未央',
-                'login_id' => 'miomio',
-                'email' => 'mio1018@icloud.com',
-                'password' => bcrypt('mio1018'),
+                'name' => 'ジョナ3',
+                'login_id' => 'jona_3',
+                'email' => 'axela0104@icloud.com',
+                'password' => bcrypt('jona333'),
             ],
             [
-                'name' => '市川貴教',
-                'login_id' => 'takanori',
+                'name' => '温泉饅頭',
+                'login_id' => 'onsen_2',
                 'email' => 'axela0104@icloud.com',
-                'password' => bcrypt('takanori0315'),
+                'password' => bcrypt('onsen222'),
             ],
         ];
 
         foreach ($data as $user) {
             User::create($user);
         }
+        factory(User::class, 100)->create();
     }
 }

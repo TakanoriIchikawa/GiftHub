@@ -14,12 +14,16 @@ class RepositoryBindServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Repositories\Prize\PrizeRepositoryInterface::class,
-            \App\Repositories\Prize\PrizeRepository::class
+            \App\Repositories\User\UserRepositoryInterface::class,
+            \App\Repositories\User\UserRepository::class
         );
         $this->app->bind(
-            \App\Repositories\PrizeCategory\PrizeCategoryRepositoryInterface::class,
-            \App\Repositories\PrizeCategory\PrizeCategoryRepository::class
+            \App\Repositories\GiftItem\GiftItemRepositoryInterface::class,
+            \App\Repositories\GiftItem\GiftItemRepository::class
+        );
+        $this->app->bind(
+            \App\Repositories\GiftCategory\GiftCategoryRepositoryInterface::class,
+            \App\Repositories\GiftCategory\GiftCategoryRepository::class
         );
     }
 
