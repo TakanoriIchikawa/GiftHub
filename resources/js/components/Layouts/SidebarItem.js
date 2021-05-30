@@ -18,107 +18,33 @@ export default [
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Free Item',
-                to: '/item-a',
-                icon: 'cil-star'
+                name: 'Give Point',
+                to: '/give-point',
+                icon: 'cil-smile'
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Free Item',
-                to: '/item-b',
-                icon: 'cil-fire'
+                name: 'Friend',
+                to: '/friend',
+                icon: 'cil-user',
             },
             {
-                _name: 'CSidebarNavTitle',
-                _children: ['Components']
+                _name: 'CSidebarNavItem',
+                name: 'Chat',
+                to: '/chat',
+                icon: 'cil-chat-bubble'
             },
             {
-                _name: 'CSidebarNavDropdown',
-                name: 'Group',
-                route: '/group',
-                icon: 'cil-group',
-                items: [
-                    {
-                        name: 'Group A',
-                        to: '/group/free-item-a'
-                    },
-                    {
-                        name: 'Group B',
-                        to: '/group/free-item-b'
-                    },
-                ]
+                _name: 'CSidebarNavItem',
+                name: 'History',
+                to: '/history',
+                icon: 'cil-history'
             },
             {
-                _name: 'CSidebarNavDropdown',
-                name: 'Free Item',
-                route: '#',
-                icon: 'cil-snowflake',
-                items: [
-                    {
-                        name: 'Free Item',
-                        to: '#'
-                    },
-                    {
-                        name: 'Free Item',
-                        to: '#'
-                    },
-                ]
-            },
-            {
-                _name: 'CSidebarNavDropdown',
-                name: 'Prize',
-                route: '/prize',
+                _name: 'CSidebarNavItem',
+                name: 'Gift',
+                to: '/gift',
                 icon: 'cil-gift',
-                items: [
-                    {
-                        name: 'Category',
-                        to: '/prize/category',
-                    },
-                    {
-                        name: 'Baby',
-                        to: {
-                            name: 'Prizes',
-                            params: {
-                                prize_category_id:1,
-                                prize_category_path:'baby',
-                                prize_category_name:'Baby',
-                            },
-                        },
-                        badge: {
-                            color: 'primary',
-                            text: 'NEW',
-                            shape: 'pill'
-                        },
-                    },
-                    {
-                        name: 'Kids',
-                        to: {
-                            name: 'Prizes',
-                            params: {
-                                prize_category_id:2,
-                                prize_category_path:'kids',
-                                prize_category_name:'Kids',
-                            },
-                        },
-                    },
-                    {
-                        name: 'Sweees',
-                        to: {
-                            name: 'Prizes',
-                            params: {
-                                prize_category_id:3,
-                                prize_category_path:'sweets',
-                                prize_category_name:'Sweets',
-                            },
-                        },
-                    },
-                ],
-            },
-            {
-                _name: 'CSidebarNavItem',
-                name: 'Free Item',
-                to: '#',
-                icon: 'cil-bolt',
                 badge: {
                     color: 'primary',
                     text: 'NEW',
@@ -165,7 +91,7 @@ export default [
                 _name: 'CSidebarNavItem',
                 name: 'Contact Mail',
                 href: 'https://coreui.io/vue/demo/free/3.1.1/#/dashboard',
-                icon: { name: 'cil-heart', class: 'text-white' },
+                icon: { name: 'cil-envelope-open', class: 'text-white' },
                 _class: 'bg-success text-white',
                 target: '_blank'
             },

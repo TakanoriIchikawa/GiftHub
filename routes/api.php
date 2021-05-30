@@ -22,6 +22,8 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 // ログアウト
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/get/prize/categories', 'Api\PrizeCategoryController@getPrizeCategories')->name('get.prize.categories');
+Route::get('/search/users', 'Api\UserController@searchUsers')->name('search.users');
 
-Route::get('/get/prizes', 'Api\PrizeController@getPrizes')->name('get.prizes');
+Route::get('/get/gift/categories', 'Api\GiftCategoryController@getGiftCategories')->name('get.gift.categories');
+
+Route::get('/get/gift/items', 'Api\GiftItemController@getGiftItems')->name('get.gift.items');

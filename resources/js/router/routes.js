@@ -8,10 +8,9 @@ import App from '../components/Layouts/App.vue'
 // 子コンポーネント
 import ItemA from '../components/Theme/ItemA.vue';
 import ItemB from '../components/Theme/ItemB.vue';
-import FreeItemA from '../components/Free/FreeItem/FreeItemA.vue';
-import FreeItemB from '../components/Free/FreeItem/FreeItemB.vue';
-import PrizeCategories from '../components/Prize/PrizeCategories.vue';
-import Prizes from '../components/Prize/Prizes.vue';
+import GivePoint from '../components/Point/GivePoint.vue';
+import GiftCategories from '../components/Gift/GiftCategories.vue';
+import GiftItems from '../components/Gift/GiftItems.vue';
 
 const routes = [
     {
@@ -47,40 +46,18 @@ const routes = [
                 },
             },
             {
-                path: 'group',
-                redirect: '/group/free-item-a',
+                path: 'give-point',
+                name: 'Give Point',
+                component: GivePoint,
                 meta: {
-                    label: 'Group'
+                    requiresAuth: true,
                 },
-                component: {
-                    render(c) {
-                        return c('router-view')
-                    }
-                },
-                children: [
-                    {
-                        path: 'free-item-a',
-                        name: 'FreeItemA',
-                        component: FreeItemA,
-                        meta: {
-                            requiresAuth: true,
-                        },
-                    },
-                    {
-                        path: 'free-item-b',
-                        name: 'FreeItemB',
-                        component: FreeItemB,
-                        meta: {
-                            requiresAuth: true,
-                        },
-                    }
-                ]
             },
             {
-                path: 'prize',
-                redirect: '/prize/category',
+                path: 'gift',
+                redirect: '/gift/category',
                 meta: {
-                    label: 'Prize'
+                    label: 'Gift'
                 },
                 component: {
                     render(c) {
@@ -91,15 +68,15 @@ const routes = [
                     {
                         path: 'category',
                         name: 'Category',
-                        component: PrizeCategories,
+                        component: GiftCategories,
                         meta: {
                             requiresAuth: true,
                         },
                     },
                     {
-                        path: ':prize_category_path',
-                        name: 'Prizes',
-                        component: Prizes,
+                        path: ':gift_category_id',
+                        name: 'Items',
+                        component: GiftItems,
                         meta: {
                             requiresAuth: true,
                         },
