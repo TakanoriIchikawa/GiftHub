@@ -18,13 +18,13 @@ export default [
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Give Point',
-                to: '/give-point',
+                name: 'Points',
+                to: '/points/give',
                 icon: 'cil-smile'
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Friend',
+                name: 'Friends',
                 to: '/friend',
                 icon: 'cil-user',
             },
@@ -42,8 +42,8 @@ export default [
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Gift',
-                to: '/gift',
+                name: 'Gifts',
+                to: '/gifts/category',
                 icon: 'cil-gift',
                 badge: {
                     color: 'primary',
@@ -62,7 +62,6 @@ export default [
             {
                 _name: 'CSidebarNavDropdown',
                 name: 'App Configuration',
-                route: '/code',
                 icon: 'cil-applications',
                 items: [
                     {

@@ -14,47 +14,8 @@ class GiftCategoryServiceTest extends TestCase
         public function setup(): void
     {
         parent::setUp();
-        $this->createTestGiftCategories();
+        $this->seed('GiftCategoriesTableSeeder');
         $this->giftCategoryService = app(GiftCategoryService::class);
-    }
-
-    /**
-     * createTestGiftCategories function
-     * テストデータの作成
-     * @return void
-     */
-    protected function createTestGiftCategories(): void
-    {
-        $data = [
-            [
-                'name' => 'Baby',
-                'path' => 'baby',
-                'title1' => 'Gifts for Baby',
-                'title2' => '赤ちゃん',
-                'icon' => 'fas fa-baby',
-                'image_name' => 'baby.jpg',
-            ],
-            [
-                'name' => 'Kids',
-                'path' => 'kids',
-                'title1' => 'Gifts for Kids',
-                'title2' => 'お子様',
-                'icon' => 'fas fa-child',
-                'image_name' => 'kids.jpg',
-            ],
-            [
-                'name' => 'Sweets',
-                'path' => 'sweets',
-                'title1' => 'Sweets Gifts',
-                'title2' => 'お菓子',
-                'icon' => 'fas fa-cookie',
-                'image_name' => 'sweets.jpg',
-            ],
-        ];
-
-        foreach ($data as $category) {
-            GiftCategory::create($category);
-        }
     }
 
     /**
@@ -71,7 +32,7 @@ class GiftCategoryServiceTest extends TestCase
         $this->assertTrue($result);
         $result = $giftCategories->where('name', 'Sweets')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftCategories->where('name', 'NotName')->isNotEmpty();
-        $this->assertFalse($result);
+        $result = $giftCategories->where('name', 'NotName')->isEmpty();
+        $this->assertTrue($result);
     }
 }
