@@ -35,7 +35,7 @@ class FriendController extends Controller
 
     /**
      * addFriend function
-     * 友達を追加
+     * 友達に追加
      * @param Request $request
      * @return json
      */

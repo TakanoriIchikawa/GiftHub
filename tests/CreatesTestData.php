@@ -4,6 +4,7 @@ namespace Tests;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Friend;
 use App\Models\GrantPoint;
 
 trait CreatesTestData
@@ -24,12 +25,34 @@ trait CreatesTestData
     }
 
     /**
+     * createTestFriends function
+     * テスト用の友達データを作成
+     * @param integer $userId
+     * @return void
+     */
+    public function createTestFriends(int $userId): void
+    {
+        $users = User::where('id', '!=', $userId)
+                        ->orderBy('id')
+                        ->limit(10)
+                        ->get();
+                        
+        foreach ($users as $user) {
+            $data = [
+                'user_id' => $userId,
+                'friend_id' => $user->id,
+            ];
+            Friend::create($data);
+        }
+    }
+
+    /**
      * createTestGrantPoints function
      * テスト用の付与ポイントデータを作成
      * @param integer $userId
      * @return void
      */
-    public function createTestGrantPoints($userId): void
+    public function createTestGrantPoints(int $userId): void
     {
         $yesterday = Carbon::yesterday();
         $today = Carbon::today();
