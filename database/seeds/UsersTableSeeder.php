@@ -17,19 +17,22 @@ class UsersTableSeeder extends Seeder
                 'name' => '市川千耀',
                 'login_id' => 'chiaki',
                 'email' => 'chiaki0223@icloud.com',
+                'image' => '3.jpg',
                 'password' => bcrypt('chiaki0223'),
             ],
             [
-                'name' => 'ジョナ3',
-                'login_id' => 'jona_3',
-                'email' => 'axela0104@icloud.com',
-                'password' => bcrypt('jona333'),
+                'name' => 'ジョナサン',
+                'login_id' => 'jonathan',
+                'email' => 'jonathan0223@icloud.com',
+                'image' => '1.jpg',
+                'password' => bcrypt('jonathan0223'),
             ],
             [
-                'name' => '温泉饅頭',
-                'login_id' => 'onsen_2',
-                'email' => 'axela0104@icloud.com',
-                'password' => bcrypt('onsen222'),
+                'name' => 'マイケル',
+                'login_id' => 'michael',
+                'email' => 'michael0223@icloud.com',
+                'image' => '2.jpg',
+                'password' => bcrypt('michael0223'),
             ],
         ];
 
@@ -37,5 +40,19 @@ class UsersTableSeeder extends Seeder
             User::create($user);
         }
         factory(User::class, 100)->create();
+
+        $images = [
+            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'
+        ];
+
+        $users = User::get();
+        foreach ($users as $user) {
+            $key = array_rand($images);
+            $image = $images[$key];
+            $data = [
+                'image' => $image
+            ];
+            User::where('id', $user->id)->update($data);
+        }
     }
 }

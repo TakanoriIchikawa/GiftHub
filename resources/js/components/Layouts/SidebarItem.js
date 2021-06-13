@@ -18,14 +18,8 @@ export default [
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Points',
-                to: '/points/give',
-                icon: 'cil-smile'
-            },
-            {
-                _name: 'CSidebarNavItem',
                 name: 'Friends',
-                to: '/friend',
+                to: '/friends/list',
                 icon: 'cil-user',
             },
             {
@@ -33,6 +27,12 @@ export default [
                 name: 'Chat',
                 to: '/chat',
                 icon: 'cil-chat-bubble'
+            },
+            {
+                _name: 'CSidebarNavItem',
+                name: 'Point',
+                to: '/points/grant',
+                icon: 'cil-smile-plus'
             },
             {
                 _name: 'CSidebarNavItem',

@@ -25,6 +25,12 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 // ユーザー検索
 Route::get('/search/users', 'Api\UserController@searchUsers')->name('search.users');
 
+// 友達検索
+Route::get('/search/friends', 'Api\FriendController@searchFriends')->name('search.friends');
+
+// 友達追加
+Route::post('/add/friend', 'Api\FriendController@addFriend')->name('add.friend');
+
 // 利用可能な付与ポイント取得
 Route::get('/get/available-point', 'Api\GrantPointController@getAvailablePoint')->name('get.available.point');
 

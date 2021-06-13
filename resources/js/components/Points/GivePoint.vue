@@ -1,59 +1,4 @@
 <template>
-<div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-9 col-lg-8">
-            <div class="card mb-3">
-                <div class="card-body p-3 mx-2">
-                    <div class="row">
-                        <div class="input-group col-12 col-sm-9">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <svg class="c-icon">
-                                        <use xlink:href="/assets/coreui.icon.svg#cil-user"></use>
-                                    </svg>
-                                </span>
-                            </div>
-                            <input v-model="userName" class="form-control" type="text" placeholder="Search User">
-                        </div>
-                        <div class="input-group form-check col-11 offset-1 col-sm-3 offset-sm-0 pt-2">
-                            <input v-model="frinedOnly" id="friend_only" type="checkbox" class="form-check-input" checked>
-                            <label for="friend_only" class="form-check-label">お友達のみ</label>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-10 col-md-9 col-lg-8">
-            <div class="row">
-                <div v-for="user in users" :key="user.id" class="col-6 col-sm-4 col-md-3 mb-2">
-                    <button class="card btn btn-outline-primary btn-block p-0 m-0"
-                            data-toggle="modal" data-target="#give_point_modal"
-                            @click="getAvailablePoint(); setReceive(user.id, user.name)">
-                        <div class="card-body p-2">
-                            <div class="d-flex align-items-center">
-                                <div class="c-avatar">
-                                    <img src="/assets/img/avatars/3.jpg" class="c-avatar-img">
-                                    <span class="c-avatar-status bg-success"></span>
-                                </div>
-                                <div class="pl-2">{{ user.name }}</div>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ポイントチャージのリンク -->
-    <router-link :to="{ name:'Grant' }">
-        <button class="btn btn-danger">
-            <svg class="c-icon">
-                <use xlink:href="/assets/coreui.icon.svg#cil-plus"></use>
-            </svg>
-            <span class="font-weight-bold">PT</span>
-        </button>
-    </router-link>
-
     <div class="modal fade" id="give_point_modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <!-- ポイントを贈った後のモーダル画面 -->
         <div v-if="this.give_point_result" class="modal-dialog">
@@ -73,7 +18,13 @@
         <div v-else class="modal-dialog">
             <div class="modal-content text-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto" id="myModalLabel">{{ receive_name }}さんへポイントを贈ります。</h5>
+                        <div class="modal-title d-flex align-items-center justify-content-center mx-auto">
+                            <div class="c-avatar">
+                                <img :src="'/assets/img/avatars/' + receive_user_image" class="c-avatar-img">
+                                <span class="c-avatar-status bg-success"></span>
+                            </div>
+                            <div class="pl-2">{{ receive_name }}さんへポイントを贈ります。</div>
+                        </div>
                     <div class="pt-1">
                         <label class="small">所持ポイント</label>
                         <span class="badge badge-primary badge-pill pt-1 mx-1" style="font-size: 14px;">{{ available_point }}</span>
@@ -104,7 +55,7 @@
                                 <ValidationProvider name="メッセージ" rules="max:30" v-slot="{ errors }">
                                 <div class="">
                                     <label class="col-form-label">メッセージを添える</label>
-                                    <textarea type="text" v-model="message" rows="2" class="form-control form-control-sm" placeholder="お風呂掃除ありがとう！"></textarea>
+                                    <textarea type="text" v-model="message" rows="2" class="form-control form-control-sm" placeholder="いつもありがとう！"></textarea>
                                 </div>
                                 <div class="text-danger p-1">{{ errors[0] }}</div>
                                 </ValidationProvider>
@@ -120,55 +71,13 @@
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
 import '../../plugin/validate.js';
 
 export default {
-    computed: {
-        userName: {
-            get () {
-                this.searchUsers()
-                return this.user_name
-            },
-            set (value) {
-                this.user_name = value
-            }
-        },
-        frinedOnly: {
-            get () {
-                this.searchUsers()
-                return this.fliend_only
-            },
-            set (value) {
-                this.fliend_only = value
-            }
-        }
-    },
     methods: {
-        searchUsers: async function() {
-            var userName = this.user_name
-            if (this.fliend_only) {
-                var url = '/api/search/users'
-            } else {
-                var url = '/api/search/users'
-            }
-            await axios.get(url, {
-                params: {
-                    user_name: userName
-                }
-            }).then ( response => {
-                this.users = response.data
-            }).catch ( error => {
-                if (error.response.status === 401) {
-                    this.$router.push({name:'Login'})
-                } else {
-                    console.log(error)
-                }
-            })
-        },
         getAvailablePoint: async function() {
             const url = '/api/get/available-point'
             await axios.get(url)
@@ -182,10 +91,11 @@ export default {
                 }
             })
         },
-        setReceive: function(userId, userName) {
+        setReceive: function(userId, userName, userImage) {
             this.give_point_result = false
-            this.receive_name = userName
             this.receive_user_id = userId
+            this.receive_name = userName
+            this.receive_user_image = userImage
             this.give_point = 10
             this.signature = true
             this.message = ''
@@ -210,13 +120,13 @@ export default {
             .then (response => {
                 console.log(response.status)
                 this.give_point_result = true
+                this.$emit('searchFriends')
             }).catch ( error => {
                 var httpStatusCode = error.response.status
                 if (httpStatusCode === 401) {
                     this.$router.push({name:'Login'})
-                } else if (httpStatusCode === 422 || httpStatusCode === 500) {
-                    alert(error.response.data.message)
                 } else {
+                    alert(error.response.data.message)
                     console.log(error)
                 }
             })
@@ -225,11 +135,9 @@ export default {
     data() {
         return {
             available_point: 0,
-            fliend_only: true,
-            user_name: '',
-            users: {},
             receive_name: '',
             receive_user_id: '',
+            receive_user_image: '',
             give_point: 10,
             signature: true,
             message: '',
@@ -237,35 +145,6 @@ export default {
         }
     }
 }
+
+
 </script>
-
-<style scoped>
-.btn-outline-primary {
-    color: #6c757d;
-}
-.btn-outline-primary:hover {
-    color: #fff;
-    font-weight: bold;
-}
-
-.btn-danger {
-    position: fixed;
-    border-radius: 50%;
-    height: 90px;
-    width: 90px;
-    font-size: 22px;
-    bottom: 6%; 
-    right: 5%;
-}
-
-@media screen and (max-width:768px) {
-    .btn-danger {
-        height: 70px;
-        width: 70px;
-        font-size: 14px;
-        bottom: 3%; 
-        right: 3%;
-    }
-}
-
-</style>

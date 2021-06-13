@@ -33,9 +33,9 @@ class UserServiceTest extends TestCase
         $this->assertLessThanOrEqual(100, $result);
         $result = $users->where('name', '市川千耀')->isNotEmpty();
         $this->assertFalse($result);
-        $result = $users->where('name', 'ジョナ3')->isNotEmpty();
+        $result = $users->where('name', 'ジョナサン')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $users->where('name', '温泉饅頭')->isNotEmpty();
+        $result = $users->where('name', 'マイケル')->isNotEmpty();
         $this->assertTrue($result);
         
         // 検索ワード：ジョナ
@@ -43,19 +43,19 @@ class UserServiceTest extends TestCase
         $users = $this->userService->searchUsers($userName);
         $result = $users->where('name', '市川千耀')->isNotEmpty();
         $this->assertFalse($result);
-        $result = $users->where('name', 'ジョナ3')->isNotEmpty();
+        $result = $users->where('name', 'ジョナサン')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $users->where('name', '温泉饅頭')->isNotEmpty();
+        $result = $users->where('name', 'マイケル')->isNotEmpty();
         $this->assertFalse($result);
 
-        // 検索ワード：温泉
-        $userName = '温泉';
+        // 検索ワード：マイケル
+        $userName = 'マイケル';
         $users = $this->userService->searchUsers($userName);
         $result = $users->where('name', '市川千耀')->isNotEmpty();
         $this->assertFalse($result);
-        $result = $users->where('name', 'ジョナ3')->isNotEmpty();
+        $result = $users->where('name', 'ジョナサン')->isNotEmpty();
         $this->assertFalse($result);
-        $result = $users->where('name', '温泉饅頭')->isNotEmpty();
+        $result = $users->where('name', 'マイケル')->isNotEmpty();
         $this->assertTrue($result);
     }
 }

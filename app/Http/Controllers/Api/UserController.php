@@ -29,7 +29,8 @@ class UserController extends Controller
     public function searchUsers(Request $request)
     {
         $userName = $request->user_name;
-        $users = $this->userService->searchUsers($userName);
+        $excludeFriends = $request->exclude_friends;
+        $users = $this->userService->searchUsers($userName, $excludeFriends);
         return response()->json($users);
     }
 }
