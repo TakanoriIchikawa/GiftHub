@@ -10,6 +10,8 @@ import ItemA from '../components/Theme/ItemA.vue';
 import ItemB from '../components/Theme/ItemB.vue';
 import GivePoint from '../components/Points/GivePoint.vue';
 import GrantPoint from '../components/Points/GrantPoint.vue';
+import FriendList from '../components/Friends/FriendList.vue';
+import FriendAdd from '../components/Friends/FriendAdd.vue';
 import GiftCategories from '../components/Gifts/GiftCategories.vue';
 import GiftItems from '../components/Gifts/GiftItems.vue';
 
@@ -70,6 +72,36 @@ const routes = [
                         path: 'grant',
                         name: 'Grant',
                         component: GrantPoint,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
+                ],
+            },
+            {
+                path: 'friends',
+                redirect: '/friends/list',
+                meta: {
+                    label: 'Friends'
+                },
+                component: {
+                    render(c) {
+                        return c('router-view')
+                    }
+                },
+                children: [
+                    {
+                        path: 'list',
+                        name: 'FriendList',
+                        component: FriendList,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
+                    {
+                        path: 'add',
+                        name: 'FriendAdd',
+                        component: FriendAdd,
                         meta: {
                             requiresAuth: true,
                         },

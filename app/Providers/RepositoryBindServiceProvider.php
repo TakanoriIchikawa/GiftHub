@@ -18,6 +18,10 @@ class RepositoryBindServiceProvider extends ServiceProvider
             \App\Repositories\User\UserRepository::class
         );
         $this->app->bind(
+            \App\Repositories\Friend\FriendRepositoryInterface::class,
+            \App\Repositories\Friend\FriendRepository::class
+        );
+        $this->app->bind(
             \App\Repositories\GrantPoint\GrantPointRepositoryInterface::class,
             \App\Repositories\GrantPoint\GrantPointRepository::class
         );
