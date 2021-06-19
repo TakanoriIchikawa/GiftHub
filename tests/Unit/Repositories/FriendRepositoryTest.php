@@ -96,14 +96,15 @@ class FriendRepositoryTest extends TestCase
     public function testExistsFriend()
     {
         Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        $userId = $this->user->id;
 
-        $friends = $this->getTestFriends($this->user->id);
+        $friends = $this->getTestFriends($userId);
         $friendUserId = $friends->first()->friend_id;
-        $result = $this->friendRepository->existsFriend($friendUserId);
+        $result = $this->friendRepository->existsFriend($userId, $friendUserId);
         $this->assertTrue($result);
 
         $friendUserId = 100000;
-        $result = $this->friendRepository->existsFriend($friendUserId);
+        $result = $this->friendRepository->existsFriend($userId, $friendUserId);
         $this->assertFalse($result);
     }
 
@@ -115,9 +116,14 @@ class FriendRepositoryTest extends TestCase
     public function testAddFriend()
     {
         Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        $userId = $this->user->id;
         $friendUserId = 1000;
-        $result = $this->friendRepository->create($friendUserId);
-        $this->assertEquals($result->user_id, $this->user->id);
+        $params = [
+            'user_id' => $userId,
+            'friend_id' => $friendUserId,
+        ];
+        $result = $this->friendRepository->create($params);
+        $this->assertEquals($result->user_id, $userId);
         $this->assertEquals($result->friend_id, $friendUserId);
     }
 }

@@ -42,12 +42,12 @@ class FriendRepository implements FriendRepositoryInterface
     /**
      * existsFriend function
      * 友達登録されているか確認
+     * @param integer $userId
      * @param integer $friendUserId
      * @return boolean
      */
-    public function existsFriend(int $friendUserId): bool
+    public function existsFriend(int $userId, int $friendUserId): bool
     {
-        $userId = Auth::id();
         return $this->model
                     ->where('user_id', $userId)
                     ->where('friend_id', $friendUserId)
@@ -57,17 +57,25 @@ class FriendRepository implements FriendRepositoryInterface
     /**
      * create function
      * 保存処理
-     * @param integer $friendUserId
+     * @param array $params
      * @return object
      */
-    public function create(int $friendUserId): object
+    public function create(array $params): object
+    {
+        return $this->model->create($params);
+    }
+
+    /**
+     * getFriendsWithLatestChatMessage function
+     * 友達と最新のチャットメッセージを取得
+     * @return object
+     */
+    public function getFriendsWithLatestChatMessage(): object
     {
         $userId = Auth::id();
-        $params = [
-            'user_id' => $userId,
-            'friend_id' => $friendUserId,
-        ];
-
-        return $this->model->create($params);
+        return $this->model
+                    ->with(['user', 'latestSendChatMessage', 'latestReceiveChatMessage'])
+                    ->where('user_id', $userId)
+                    ->get();
     }
 }

@@ -22,6 +22,10 @@ class RepositoryBindServiceProvider extends ServiceProvider
             \App\Repositories\Friend\FriendRepository::class
         );
         $this->app->bind(
+            \App\Repositories\ChatMessage\ChatMessageRepositoryInterface::class,
+            \App\Repositories\ChatMessage\ChatMessageRepository::class
+        );
+        $this->app->bind(
             \App\Repositories\GrantPoint\GrantPointRepositoryInterface::class,
             \App\Repositories\GrantPoint\GrantPointRepository::class
         );

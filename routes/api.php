@@ -25,11 +25,23 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 // ユーザー検索
 Route::get('/search/users', 'Api\UserController@searchUsers')->name('search.users');
 
+// ユーザー取得
+Route::get('/find/user', 'Api\UserController@findUser')->name('find.user');
+
 // 友達検索
 Route::get('/search/friends', 'Api\FriendController@searchFriends')->name('search.friends');
 
 // 友達追加
 Route::post('/add/friend', 'Api\FriendController@addFriend')->name('add.friend');
+
+// チャットメッセージ作成
+Route::post('/send/chat/message', 'Api\ChatMessageController@sendChatMessage')->name('send.chat.message');
+
+// チャット取得
+Route::get('/get/chats', 'Api\ChatMessageController@getChats')->name('get.chats');
+
+// チャットメッセージ取得
+Route::get('/get/chat/messages', 'Api\ChatMessageController@getChatMessages')->name('get.chat.messages');
 
 // 利用可能な付与ポイント取得
 Route::get('/get/available-point', 'Api\GrantPointController@getAvailablePoint')->name('get.available.point');

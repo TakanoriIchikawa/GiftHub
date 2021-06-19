@@ -22,4 +22,16 @@ class Friend extends Model
     {
         return $this->hasMany(GivePoint::class, 'receive_user_id', 'friend_id');
     }
+
+    public function latestSendChatMessage()
+    {
+        return $this->hasOne(ChatMessage::class, 'send_user_id', 'friend_id')
+                    ->orderBy('created_at', 'desc');
+    }
+
+    public function latestReceiveChatMessage()
+    {
+        return $this->hasOne(ChatMessage::class, 'receive_user_id', 'friend_id')
+                    ->orderBy('created_at', 'desc');
+    }
 }

@@ -6,12 +6,13 @@ import Login from '../components/Auth/Login.vue';
 import App from '../components/Layouts/App.vue'
 
 // 子コンポーネント
-import ItemA from '../components/Theme/ItemA.vue';
-import ItemB from '../components/Theme/ItemB.vue';
+import Dashboard from '../components/Theme/Dashboard.vue';
 import GivePoint from '../components/Points/GivePoint.vue';
 import GrantPoint from '../components/Points/GrantPoint.vue';
 import FriendList from '../components/Friends/FriendList.vue';
 import FriendAdd from '../components/Friends/FriendAdd.vue';
+import ChatList from '../components/Chat/ChatList.vue';
+import ChatRoom from '../components/Chat/ChatRoom.vue';
 import GiftCategories from '../components/Gifts/GiftCategories.vue';
 import GiftItems from '../components/Gifts/GiftItems.vue';
 
@@ -28,22 +29,14 @@ const routes = [
     },
     {
         path: '/',
-        redirect: '/item-a',
+        redirect: '/dashboard',
         name: 'Home',
         component: App,
         children: [
             {
-                path: 'item-a',
-                name: 'ItemA',
-                component: ItemA,
-                meta: {
-                    requiresAuth: true,
-                },
-            },
-            {
-                path: 'item-b',
-                name: 'ItemB',
-                component: ItemB,
+                path: 'dashboard',
+                name: 'Dashboard',
+                component: Dashboard,
                 meta: {
                     requiresAuth: true,
                 },
@@ -102,6 +95,36 @@ const routes = [
                         path: 'add',
                         name: 'FriendAdd',
                         component: FriendAdd,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
+                ],
+            },
+            {
+                path: 'chat',
+                redirect: '/chat/list',
+                meta: {
+                    label: 'Chat'
+                },
+                component: {
+                    render(c) {
+                        return c('router-view')
+                    }
+                },
+                children: [
+                    {
+                        path: 'list',
+                        name: 'ChatList',
+                        component: ChatList,
+                        meta: {
+                            requiresAuth: true,
+                        },
+                    },
+                    {
+                        path: 'room/:receive_user_id',
+                        name: 'ChatRoom',
+                        component: ChatRoom,
                         meta: {
                             requiresAuth: true,
                         },

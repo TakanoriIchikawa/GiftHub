@@ -4,6 +4,7 @@ const state = {
 
 const getters = {
     check: state => state.user.name ? true : false,
+    id: state => state.user.id ? state.user.id : '',
     name: state => state.user.name ? state.user.name : '',
     email: state => state.user.email ? state.user.email : '',
 }

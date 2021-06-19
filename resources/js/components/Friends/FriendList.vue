@@ -49,11 +49,13 @@
                                             <use xlink:href="/assets/coreui.icon.svg#cil-smile"></use>
                                         </svg>
                                     </button>
-                                    <button class="btn btn-sm btn-danger ml-2">
+                                    <router-link :to="{ name:'ChatRoom', params: { receive_user_id: friend.user.id}}">
+                                    <button type="button" class="btn btn-sm btn-danger ml-2">
                                         <svg class="c-icon d-flex align-items-center">
                                             <use xlink:href="/assets/coreui.icon.svg#cil-chat-bubble"></use>
                                         </svg>
                                     </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -112,10 +114,10 @@ export default {
                 }
             })
         },
-        givePointEvent(userId, friendName, friendImage) {
+        givePointEvent: function(friendUserId, friendName, friendImage) {
             this.$refs.givePoint.getAvailablePoint()
-            this.$refs.givePoint.setReceive(userId, friendName, friendImage)
-        }
+            this.$refs.givePoint.setReceive(friendUserId, friendName, friendImage)
+        },
     },
     data() {
         return {
