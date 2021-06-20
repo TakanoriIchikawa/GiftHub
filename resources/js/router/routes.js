@@ -15,6 +15,7 @@ import ChatList from '../components/Chat/ChatList.vue';
 import ChatRoom from '../components/Chat/ChatRoom.vue';
 import GiftCategories from '../components/Gifts/GiftCategories.vue';
 import GiftItems from '../components/Gifts/GiftItems.vue';
+import History from '../components/History/History.vue';
 
 const routes = [
     {
@@ -160,6 +161,14 @@ const routes = [
                         },
                     },
                 ]
+            },
+            {
+                path: 'history',
+                name: 'History',
+                component: History,
+                meta: {
+                    requiresAuth: true,
+                },
             },
         ],
     },

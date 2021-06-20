@@ -41,7 +41,7 @@ class ChatMessageService
                 continue;
             }
 
-            if ($latestSendChatMessage['created_at'] < $latestReceiveChatMessage['created_at']) {
+            if ($latestSendChatMessage['id'] < $latestReceiveChatMessage['id']) {
                 $friend = $this->setLatestChatMessage($friend, $latestReceiveChatMessage);
             } else {
                 $friend = $this->setLatestChatMessage($friend, $latestSendChatMessage);

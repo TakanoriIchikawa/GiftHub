@@ -17,6 +17,7 @@ class FriendRepositoryTest extends TestCase
         $this->seed('UsersTableSeeder');
         $this->user = $this->getTestUser('chiaki');
         $this->createTestFriends($this->user->id);
+        $this->createTestChatMessages($this->user->id);
         $this->friendRepository = app(FriendRepositoryInterface::class);
     }
 
@@ -125,5 +126,22 @@ class FriendRepositoryTest extends TestCase
         $result = $this->friendRepository->create($params);
         $this->assertEquals($result->user_id, $userId);
         $this->assertEquals($result->friend_id, $friendUserId);
+    }
+
+    /**
+     * testGetFriendsWithLatestChatMessage function
+     * 友達と最新のチャットメッセージを取得のテスト
+     * @return void
+     */
+    public function testGetFriendsWithLatestChatMessage()
+    {
+        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        $friendsWithLatestChatMessage = $this->friendRepository->getFriendsWithLatestChatMessage();
+        foreach ($friendsWithLatestChatMessage as $friend) {
+            $latestSendChatMessage = $friend->latestSendChatMessage['message'];
+            $latestReceiveChatMessage = $friend->latestReceiveChatMessage['message'];
+            $this->assertEquals($latestSendChatMessage, 'テスト送信メッセージ');
+            $this->assertEquals($latestReceiveChatMessage, 'テスト受信メッセージ');
+        }
     }
 }

@@ -19,6 +19,12 @@ class FriendsTableSeeder extends Seeder
                 'friend_id' => $i,
             ];
             Friend::create($data);
+
+            $data = [
+                'user_id' => $i,
+                'friend_id' => 1,
+            ];
+            Friend::create($data);
         }
     }
 }

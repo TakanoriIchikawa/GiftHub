@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Friend extends Model
 {
@@ -25,13 +26,18 @@ class Friend extends Model
 
     public function latestSendChatMessage()
     {
-        return $this->hasOne(ChatMessage::class, 'send_user_id', 'friend_id')
-                    ->orderBy('created_at', 'desc');
+        $userId = Auth::id();
+        return $this->hasOne(ChatMessage::class, 'receive_user_id', 'friend_id')
+                    ->where('send_user_id', $userId)
+                    ->orderBy('id', 'desc');
     }
 
     public function latestReceiveChatMessage()
     {
-        return $this->hasOne(ChatMessage::class, 'receive_user_id', 'friend_id')
-                    ->orderBy('created_at', 'desc');
+        $userId = Auth::id();
+        return $this->hasOne(ChatMessage::class, 'send_user_id', 'friend_id')
+                    ->where('receive_user_id', $userId)
+                    ->orderBy('id', 'desc');
+
     }
 }

@@ -28,7 +28,7 @@ class ChatMessageRepository implements ChatMessageRepositoryInterface
         return $this->model
                     ->whereIn('send_user_id', $userIds)
                     ->whereIn('receive_user_id', $userIds)
-                    ->orderBy('created_at')
+                    ->orderBy('id')
                     ->get();
     }
 
