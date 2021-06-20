@@ -33,4 +33,11 @@ class UserController extends Controller
         $users = $this->userService->searchUsers($userName, $excludeFriends);
         return response()->json($users);
     }
+
+    public function findUser(Request $request)
+    {
+        $userId = $request->user_id;
+        $user = $this->userService->findUser($userId);
+        return response()->json($user);
+    }
 }

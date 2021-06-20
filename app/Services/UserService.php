@@ -38,4 +38,9 @@ class UserService
         }
         return $this->userRepository->searchUsers($userName, $excludeFriendIds);
     }
+
+    public function findUser($userId)
+    {
+        return $this->userRepository->findUser($userId);
+    }
 }

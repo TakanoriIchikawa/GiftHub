@@ -28,6 +28,6 @@ trait GetTestData
     public function getTestFriends(int $userId): object
     {
         return Friend::where('user_id', $userId)
-                      ->get();
+                        ->get();
     }
 }

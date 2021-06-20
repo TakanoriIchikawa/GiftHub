@@ -45,7 +45,8 @@ class FriendService
      */
     public function existsFriend(int $friendUserId): bool
     {
-        return $this->friendRepository->existsFriend($friendUserId);
+        $userId = Auth::id();
+        return $this->friendRepository->existsFriend($userId, $friendUserId);
     }
 
     /**
@@ -56,9 +57,13 @@ class FriendService
      */
     public function addFriend(int $friendUserId): bool
     {
+        $params = [
+            'user_id' => Auth::id(),
+            'friend_id' => $friendUserId,
+        ];
         DB::beginTransaction();
         try {
-            $this->friendRepository->create($friendUserId);
+            $this->friendRepository->create($params);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();

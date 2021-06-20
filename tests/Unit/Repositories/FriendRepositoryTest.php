@@ -17,6 +17,7 @@ class FriendRepositoryTest extends TestCase
         $this->seed('UsersTableSeeder');
         $this->user = $this->getTestUser('chiaki');
         $this->createTestFriends($this->user->id);
+        $this->createTestChatMessages($this->user->id);
         $this->friendRepository = app(FriendRepositoryInterface::class);
     }
 
@@ -96,14 +97,15 @@ class FriendRepositoryTest extends TestCase
     public function testExistsFriend()
     {
         Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        $userId = $this->user->id;
 
-        $friends = $this->getTestFriends($this->user->id);
+        $friends = $this->getTestFriends($userId);
         $friendUserId = $friends->first()->friend_id;
-        $result = $this->friendRepository->existsFriend($friendUserId);
+        $result = $this->friendRepository->existsFriend($userId, $friendUserId);
         $this->assertTrue($result);
 
         $friendUserId = 100000;
-        $result = $this->friendRepository->existsFriend($friendUserId);
+        $result = $this->friendRepository->existsFriend($userId, $friendUserId);
         $this->assertFalse($result);
     }
 
@@ -115,9 +117,31 @@ class FriendRepositoryTest extends TestCase
     public function testAddFriend()
     {
         Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        $userId = $this->user->id;
         $friendUserId = 1000;
-        $result = $this->friendRepository->create($friendUserId);
-        $this->assertEquals($result->user_id, $this->user->id);
+        $params = [
+            'user_id' => $userId,
+            'friend_id' => $friendUserId,
+        ];
+        $result = $this->friendRepository->create($params);
+        $this->assertEquals($result->user_id, $userId);
         $this->assertEquals($result->friend_id, $friendUserId);
+    }
+
+    /**
+     * testGetFriendsWithLatestChatMessage function
+     * 友達と最新のチャットメッセージを取得のテスト
+     * @return void
+     */
+    public function testGetFriendsWithLatestChatMessage()
+    {
+        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        $friendsWithLatestChatMessage = $this->friendRepository->getFriendsWithLatestChatMessage();
+        foreach ($friendsWithLatestChatMessage as $friend) {
+            $latestSendChatMessage = $friend->latestSendChatMessage['message'];
+            $latestReceiveChatMessage = $friend->latestReceiveChatMessage['message'];
+            $this->assertEquals($latestSendChatMessage, 'テスト送信メッセージ');
+            $this->assertEquals($latestReceiveChatMessage, 'テスト受信メッセージ');
+        }
     }
 }

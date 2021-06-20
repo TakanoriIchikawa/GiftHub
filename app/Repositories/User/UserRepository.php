@@ -45,4 +45,9 @@ class UserRepository implements UserRepositoryInterface
         return $query->orderBy('id')
                     ->get();
     }
+
+    public function findUser($userId)
+    {
+        return $this->model->find($userId);
+    }
 }
