@@ -15,7 +15,7 @@ class FriendServiceTest extends TestCase
     {
         parent::setUp();
         $this->seed('UsersTableSeeder');
-        $this->user = $this->getTestUser('chiaki');
+        $this->user = $this->getTestUser('chiaki0223@icloud.com');
         $this->createTestFriends($this->user->id);
         $this->friendService = app(FriendService::class);
     }
@@ -27,7 +27,7 @@ class FriendServiceTest extends TestCase
      */
     public function testSearchFriends()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         // 検索ワード：なし
         $friendName = '';
         $friends = $this->friendService->searchFriends($friendName);
@@ -95,7 +95,7 @@ class FriendServiceTest extends TestCase
      */
     public function testExistsFriend()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
 
         $friends = $this->getTestFriends($this->user->id);
         $friendUserId = $friends->first()->friend_id;
@@ -114,7 +114,7 @@ class FriendServiceTest extends TestCase
      */
     public function testAddFriend()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $friendUserId = 1000;
         $result = $this->friendService->addFriend($friendUserId);
         $this->assertTrue($result);

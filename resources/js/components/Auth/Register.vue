@@ -34,21 +34,7 @@
                     <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
                     </ValidationProvider>
 
-                    <ValidationProvider name="ログインID" rules="required|alpha_dash|min:6|max:100" v-slot="{ errors }">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="/assets/coreui.icon.svg#cil-shield-alt"></use>
-                                </svg>
-                            </span>
-                        </div>
-                        <input class="form-control" type="text" v-model="user.login_id" placeholder="Login ID">
-                    </div>
-                    <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
-                    </ValidationProvider>
-
-                    <ValidationProvider name="メールアドレス" rules="email|max:100" v-slot="{ errors }">
+                    <ValidationProvider name="メールアドレス" rules="required|email|max:100" v-slot="{ errors }">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -139,7 +125,6 @@ export default {
         return {
             user: {
                 name: "",
-                login_id: "",
                 email: "",
                 password: "",
                 password_confirmation: "",

@@ -14,7 +14,7 @@ class ChatMessageRepositoryTest extends TestCase
     {
         parent::setUp();
         $this->seed('UsersTableSeeder');
-        $this->user = $this->getTestUser('chiaki');
+        $this->user = $this->getTestUser('chiaki0223@icloud.com');
         $this->createTestFriends($this->user->id);
         $this->createTestChatMessages($this->user->id);
         $this->chatMessageRepository = app(ChatMessageRepositoryInterface::class);

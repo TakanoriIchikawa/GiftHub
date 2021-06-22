@@ -30,4 +30,23 @@ class GrantPointController extends Controller
         $availablePoint = $this->grantPointService->getAvailablePoint();
         return response()->json($availablePoint);
     }
+
+    /**
+     * chargeGrantPoint function
+     * ポイントのチャージ
+     * @param Request $request
+     * @return void
+     */
+    public function chargeGrantPoint(Request $request)
+    {
+        $params = $request->params;
+        $result = $this->grantPointService->chargeGrantPoint($params);
+        if (!$result) {
+            $message = '更新処理に失敗しました。';
+            return response()->json(['message' => $message], 500);
+        }
+
+        $availablePoint = $this->grantPointService->getAvailablePoint();
+        return response()->json($availablePoint);
+    }
 }

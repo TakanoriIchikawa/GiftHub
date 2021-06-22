@@ -20,7 +20,6 @@ class RegisterApiTest extends TestCase
     {
         $data = [
             'name' => '市川千耀',
-            'login_id' => 'chiaki',
             'email' => 'chiaki0223@icloud.com',
             'password' => 'chiaki0223',
             'password_confirmation' => 'chiaki0223',

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\GrantPoint;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -51,7 +53,6 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:191'],
-            'login_id' => ['required', 'string', 'min:6', 'max:191', 'alpha_num', 'unique:users'],
             'email' => ['string', 'email', 'max:191', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'max:191', 'confirmed'],
         ]);
@@ -69,12 +70,21 @@ class RegisterController extends Controller
             $data['email'] = '';
         }
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
-            'login_id' => $data['login_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $date = new Carbon;
+        GrantPoint::create([
+            'user_id' => $user->id,
+            'grant_point' => 500,
+            'available_point' => 500,
+            'expiration_date' => $date->addMonth(1)->format('Y-m-d'),
+        ]);
+
+        return $user;
     }
 
     protected function registered(Request $request, $user)

@@ -25,7 +25,7 @@ class GivePointControllerTest extends TestCase
      */
     public function testGivePoint(): void
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'receive_user_id' => 2,
             'give_point' => 200,

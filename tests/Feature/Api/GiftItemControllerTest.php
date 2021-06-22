@@ -25,7 +25,7 @@ class GiftItemControllerTest extends TestCase
      */
     public function testGetGiftItems(): void
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('get.gift.items'));
         $response->assertStatus(200);
     }

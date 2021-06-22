@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\GrantPoint\GrantPointRepositoryInterface;
 
 class GrantPointService
@@ -26,5 +28,20 @@ class GrantPointService
     {
         $availablePoints = $this->grantPointRepository->getAvailablePoints();
         return $availablePoints->sum('available_point');
+    }
+
+    /**
+     * chargeGrantPoint function
+     * ポイントのチャージ
+     * @param array $params
+     * @return void
+     */
+    public function chargeGrantPoint(array $params)
+    {
+        $params['user_id'] = Auth::id();
+        $params['available_point'] = $params['grant_point'];
+        $date = new Carbon;
+        $params['expiration_date'] = $date->addMonth(2)->format('Y-m-d');
+        return $this->grantPointRepository->create($params);
     }
 }

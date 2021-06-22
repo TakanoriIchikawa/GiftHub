@@ -15,21 +15,18 @@ class UsersTableSeeder extends Seeder
         $data= [
             [
                 'name' => '市川千耀',
-                'login_id' => 'chiaki',
                 'email' => 'chiaki0223@icloud.com',
                 'image' => '3.jpg',
                 'password' => bcrypt('chiaki0223'),
             ],
             [
                 'name' => 'ジョナサン',
-                'login_id' => 'jonathan',
                 'email' => 'jonathan0223@icloud.com',
                 'image' => '1.jpg',
                 'password' => bcrypt('jonathan0223'),
             ],
             [
                 'name' => 'マイケル',
-                'login_id' => 'michael',
                 'email' => 'michael0223@icloud.com',
                 'image' => '2.jpg',
                 'password' => bcrypt('michael0223'),

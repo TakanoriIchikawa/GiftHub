@@ -44,7 +44,7 @@ const routes = [
             },
             {
                 path: 'points',
-                redirect: '/points/give',
+                redirect: '/points/grant',
                 meta: {
                     label: 'Points'
                 },
