@@ -15,7 +15,7 @@ class ChatMessageServiceTest extends TestCase
     {
         parent::setUp();
         $this->seed('UsersTableSeeder');
-        $this->user = $this->getTestUser('chiaki');
+        $this->user = $this->getTestUser('chiaki0223@icloud.com');
         $this->createTestFriends($this->user->id);
         $this->createTestChatMessages($this->user->id);
         $this->chatMessageService = app(ChatMessageService::class);
@@ -27,7 +27,7 @@ class ChatMessageServiceTest extends TestCase
      * @return void
      */
     public function testGetChats() {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $chats = $this->chatMessageService->getChats();
         foreach ($chats as $chat) {
             if (isset($sortId)) {
@@ -54,7 +54,7 @@ class ChatMessageServiceTest extends TestCase
      */
     public function testGetChatMessages()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $friend = $this->getTestFriends($this->user->id)->first();
         $chatMessages = $this->chatMessageService->getChatMessages($friend->friend_id);
         foreach ($chatMessages as $chatMessage) {
@@ -73,7 +73,7 @@ class ChatMessageServiceTest extends TestCase
      */
     public function testSendChatMessage()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'receive_user_id' => 100,
             'message' => 'テストメッセージ',

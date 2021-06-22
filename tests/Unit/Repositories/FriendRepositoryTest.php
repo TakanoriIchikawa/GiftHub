@@ -15,7 +15,7 @@ class FriendRepositoryTest extends TestCase
     {
         parent::setUp();
         $this->seed('UsersTableSeeder');
-        $this->user = $this->getTestUser('chiaki');
+        $this->user = $this->getTestUser('chiaki0223@icloud.com');
         $this->createTestFriends($this->user->id);
         $this->createTestChatMessages($this->user->id);
         $this->friendRepository = app(FriendRepositoryInterface::class);
@@ -28,7 +28,7 @@ class FriendRepositoryTest extends TestCase
      */
     public function testSearchFriends()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         // 検索ワード：なし
         $friendName = '';
         $friends = $this->friendRepository->searchFriends($friendName);
@@ -96,7 +96,7 @@ class FriendRepositoryTest extends TestCase
      */
     public function testExistsFriend()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $userId = $this->user->id;
 
         $friends = $this->getTestFriends($userId);
@@ -116,7 +116,7 @@ class FriendRepositoryTest extends TestCase
      */
     public function testAddFriend()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $userId = $this->user->id;
         $friendUserId = 1000;
         $params = [
@@ -135,7 +135,7 @@ class FriendRepositoryTest extends TestCase
      */
     public function testGetFriendsWithLatestChatMessage()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $friendsWithLatestChatMessage = $this->friendRepository->getFriendsWithLatestChatMessage();
         foreach ($friendsWithLatestChatMessage as $friend) {
             $latestSendChatMessage = $friend->latestSendChatMessage['message'];

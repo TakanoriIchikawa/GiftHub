@@ -36,6 +36,17 @@ class GrantPointRepository implements GrantPointRepositoryInterface
     }
 
     /**
+     * create function
+     * 保存処理
+     * @param array $params
+     * @return object
+     */
+    public function create(array $params): object
+    {
+        return $this->model->create($params);
+    }
+
+    /**
      * update function
      * 更新処理
      * @param array $params

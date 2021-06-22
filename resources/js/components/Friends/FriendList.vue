@@ -106,6 +106,10 @@ export default {
                 }
             }).then ( response => {
                 this.friends = response.data
+                // 友達がいない場合は追加画面へ
+                if (!Object.keys(this.friends).length) {
+                    this.$router.push({name:'FriendAdd'})
+                } 
             }).catch ( error => {
                 if (error.response.status === 401) {
                     this.$router.push({name:'Login'})

@@ -48,9 +48,4 @@ class LoginController extends Controller
         $request->session()->regenerate();
         return response()->json();
     }
-
-    public function username()
-    {
-        return 'login_id';
-    }
 }

@@ -20,7 +20,7 @@ class UserRepositoryTest extends TestCase
 
     public function testSearchUsers(): void
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         // 検索ワード：なし
         $userName = '';
         $users = $this->userRepository->searchUsers($userName);

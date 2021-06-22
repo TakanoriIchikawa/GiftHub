@@ -43,6 +43,9 @@ Route::get('/get/chats', 'Api\ChatMessageController@getChats')->name('get.chats'
 // チャットメッセージ取得
 Route::get('/get/chat/messages', 'Api\ChatMessageController@getChatMessages')->name('get.chat.messages');
 
+// ポイントの購入
+Route::post('/charge/grant-point', 'Api\GrantPointController@chargeGrantPoint')->name('charge.grant.point');
+
 // 利用可能な付与ポイント取得
 Route::get('/get/available-point', 'Api\GrantPointController@getAvailablePoint')->name('get.available.point');
 

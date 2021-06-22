@@ -25,7 +25,7 @@ class FriendControllerTest extends TestCase
      */
     public function testSearchFriends()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('search.friends'));
         $response->assertStatus(200);
     }
@@ -37,7 +37,7 @@ class FriendControllerTest extends TestCase
      */
     public function testAddFriend()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'friend_user_id' => 2,
         ];

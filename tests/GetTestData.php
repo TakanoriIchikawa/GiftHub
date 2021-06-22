@@ -10,12 +10,12 @@ trait GetTestData
     /**
      * getTestUser function
      * テストユーザーを取得
-     * @param string $loginId
+     * @param string $email
      * @return object
      */
-    public function getTestUser(string $loginId): object
+    public function getTestUser(string $email): object
     {
-        return User::where('login_id', $loginId)
+        return User::where('email', $email)
                     ->first();
     }
 

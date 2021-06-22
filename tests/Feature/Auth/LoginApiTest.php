@@ -25,7 +25,7 @@ class LoginApiTest extends TestCase
     public function testLoginApi(): void
     {
         $data = [
-            'login_id' => 'chiaki',
+            'email' => 'chiaki0223@icloud.com',
             'password' => 'chiaki0223',
         ];
         $response = $this->json('POST', route('login'), $data);

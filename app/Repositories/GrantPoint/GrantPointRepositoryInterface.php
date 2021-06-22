@@ -12,6 +12,14 @@ interface GrantPointRepositoryInterface
     public function getAvailablePoints(): object;
 
     /**
+     * create function
+     * 保存処理
+     * @param array $params
+     * @return object
+     */
+    public function create(array $params): object;
+
+    /**
      * update function
      * 更新処理
      * @param array $params

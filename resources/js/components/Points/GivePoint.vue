@@ -18,16 +18,16 @@
         <div v-else class="modal-dialog">
             <div class="modal-content text-dark">
                 <div class="modal-header">
-                        <div class="modal-title d-flex align-items-center justify-content-center mx-auto">
-                            <div class="c-avatar">
-                                <img :src="'/assets/img/avatars/' + receive_user_image" class="c-avatar-img">
-                                <span class="c-avatar-status bg-success"></span>
-                            </div>
-                            <div class="pl-2">{{ receive_name }}さんへポイントを贈ります。</div>
+                    <div class="modal-title d-flex align-items-center justify-content-center mx-auto">
+                        <div class="c-avatar">
+                            <img :src="'/assets/img/avatars/' + receive_user_image" class="c-avatar-img">
+                            <span class="c-avatar-status bg-success"></span>
                         </div>
-                    <div class="pt-1">
+                        <div class="pl-2">{{ receive_name }}さんへポイントを贈ります。</div>
+                    </div>
+                    <div class="pt-2">
                         <label class="small">所持ポイント</label>
-                        <span class="badge badge-primary badge-pill pt-1 mx-1" style="font-size: 14px;">{{ available_point }}</span>
+                        <span class="badge badge-primary badge-pill pt-1 mx-1" style="font-size: 14px;">{{ available_point.toLocaleString() }}</span>
                     </div>
                 </div>
                 <ValidationObserver ref="observer" v-slot="{ invalid }">
@@ -38,7 +38,7 @@
                                 <ValidationProvider name="ポイント" rules="required|min_value:1|max_value:1000" v-slot="{ errors }">
                                 <div class="input-group">
                                     <input type="text" v-model="give_point" class="form-control form-control-sm text-right" placeholder="0">
-                                    <label class="col-form-label small px-1 mr-sm-3"> /{{ available_point }}pt</label>
+                                    <label class="col-form-label small px-1 mr-sm-3"> /{{ available_point.toLocaleString() }}pt</label>
                                 </div>
                                 <div class="text-danger p-1">{{ errors[0] }}</div>
                                 </ValidationProvider>
@@ -47,7 +47,7 @@
                             <div class="col-5 form-check pt-1 mb-1">
                                 <div class="input-group">
                                     <input id="signature" type="checkbox" v-model="signature" class="form-check-input" checked>
-                                    <label for="signature" class="form-check-label">相手に名前を表示</label>
+                                    <label for="signature" class="form-check-label">相手に通知する</label>
                                 </div>
                             </div>
 
@@ -118,7 +118,6 @@ export default {
                 }
             })
             .then (response => {
-                console.log(response.status)
                 this.give_point_result = true
                 this.$emit('searchFriends')
             }).catch ( error => {

@@ -25,8 +25,23 @@ class GrantPointControllerTest extends TestCase
      */
     public function testGetAvailablePoint(): void
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('get.available.point'));
+        $response->assertStatus(200);
+    }
+
+    /**
+     * testChargeGrantPoint function
+     * ポイントチャージのテスト
+     * @return void
+     */
+    public function testChargeGrantPoint()
+    {
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
+        $params = [
+            'grant_point' => 1000,
+        ];
+        $response = $this->json('POST', route('charge.grant.point'), ['params' => $params]);
         $response->assertStatus(200);
     }
 }

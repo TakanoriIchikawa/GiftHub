@@ -14,16 +14,16 @@
                         <h1>Login</h1>
                         <p class="text-muted">Sign In to your account</p>
 
-                        <ValidationProvider name="ユーザーID" rules="required" v-slot="{ errors }">
+                        <ValidationProvider name="メールアドレス" rules="required" v-slot="{ errors }">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <svg class="c-icon">
-                                        <use xlink:href="assets/coreui.icon.svg#cil-credit-card"></use>
+                                        <use xlink:href="assets/coreui.icon.svg#cil-envelope-closed"></use>
                                     </svg>
                                 </span>
                             </div>
-                            <input class="form-control" v-model="user.login_id" type="text" placeholder="User ID">
+                            <input class="form-control" v-model="user.email" type="text" placeholder="Email">
                         </div>
                         <div class="text-danger p-1 mb-3">{{ errors[0] }}</div>
                         </ValidationProvider>

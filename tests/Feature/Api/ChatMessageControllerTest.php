@@ -26,7 +26,7 @@ class ChatMessageControllerTest extends TestCase
      */
     public function testGetChats()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('get.chats'));
         $response->assertStatus(200);
     }
@@ -38,7 +38,7 @@ class ChatMessageControllerTest extends TestCase
      */
     public function testGetChatMessages()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('get.chat.messages'), ['receive_user_id' => 2]);
         $response->assertStatus(200);
     }
@@ -50,7 +50,7 @@ class ChatMessageControllerTest extends TestCase
      */
     public function sendChatMessage()
     {
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'receive_user_id' => 2,
             'message' => 'テストメッセージ',

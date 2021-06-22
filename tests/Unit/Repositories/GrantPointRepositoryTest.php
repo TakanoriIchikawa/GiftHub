@@ -18,7 +18,7 @@ class GrantPointRepositoryTest extends TestCase
         $this->user = $this->createTestUser();
         $this->createTestGrantPoints($this->user->id);
         $this->grantPointRepository = app(GrantPointRepositoryInterface::class);
-        Auth::attempt(['login_id' => 'chiaki', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -41,6 +41,32 @@ class GrantPointRepositoryTest extends TestCase
 
         $result = $grantPoints->sum('available_point');
         $this->assertSame($result, 2500);
+    }
+
+    /**
+     * testCreate function
+     * 保存処理のテスト
+     * @return void
+     */
+    public function testCreate()
+    {
+        $date = new Carbon;
+        $expirationDate = $date->addMonth(2)->format('Y-m-d');
+
+        $params = [
+            'user_id' => $this->user->id,
+            'grant_point' => 1000,
+            'available_point' => 1000,
+            'expiration_date' => $expirationDate
+        ];
+        $result = $this->grantPointRepository->create($params);
+        $this->assertEquals($result->user_id, $this->user->id);
+        $this->assertEquals($result->grant_point, 1000);
+        $this->assertEquals($result->available_point, 1000);
+
+        $date = new Carbon;
+        $expirationDate = $date->addMonth(2)->format('Y-m-d');
+        $this->assertEquals($result->expiration_date, $expirationDate);
     }
 
     /**
