@@ -16,6 +16,7 @@ class GivePointControllerTest extends TestCase
         parent::setUp();
         $this->user = $this->createTestUser();
         $this->createTestGrantPoints($this->user->id);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -25,7 +26,6 @@ class GivePointControllerTest extends TestCase
      */
     public function testGivePoint(): void
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'receive_user_id' => 2,
             'give_point' => 200,

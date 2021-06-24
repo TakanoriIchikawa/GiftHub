@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGiftItemsTable extends Migration
+class CreateExchangePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateGiftItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gift_items', function (Blueprint $table) {
+        Schema::create('exchange_points', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('gift_category_id');
-            $table->string('name', 100);
-            $table->integer('point');
-            $table->string('image', 50)->default('noimage.jpg');
+            $table->integer('user_id');
+            $table->integer('gift_item_id');
+            $table->integer('exchange_point');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateGiftItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gift_items');
+        Schema::dropIfExists('exchange_points');
     }
 }

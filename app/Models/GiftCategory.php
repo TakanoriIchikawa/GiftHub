@@ -14,6 +14,6 @@ class GiftCategory extends Model
         'title1',
         'title2',
         'icon',
-        'image_name',
+        'image',
     ];
 }

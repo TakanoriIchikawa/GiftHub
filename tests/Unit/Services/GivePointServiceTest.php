@@ -23,6 +23,7 @@ class GivePointServiceTest extends TestCase
         parent::setUp();
         $this->user = $this->createTestUser();
         $this->createTestGrantPoints($this->user->id);
+        $this->createTestGivePoints($this->user->id);
         $this->givePointService = app(GivePointService::class);
         Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
     }
@@ -37,6 +38,28 @@ class GivePointServiceTest extends TestCase
         $testParams = self::TEST_PARAMS;
         $result = $this->givePointService->givePoint($testParams);
         $this->assertTrue($result);
+    }
+
+    /**
+     * testGetGivePoint function
+     * 贈ったポイント取得のテスト
+     * @return void
+     */
+    public function testGetGivePoint(): void
+    { 
+        $result = $this->givePointService->getGivePoint();
+        $this->assertEquals($result, 3000);
+    }
+
+    /**
+     * testGetReceivePoint function
+     * 貰ったポイント取得のテスト
+     * @return void
+     */
+    public function testGetReceivePoint(): void
+    {
+        $result = $this->givePointService->getReceivePoint();
+        $this->assertEquals($result, 4000);
     }
 
     /**

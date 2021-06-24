@@ -1,7 +1,7 @@
 <template>
 
 <div class="row mt-md-3 mt-lg-3">
-    <div v-for="item in data" :key="item.id" class="col-12 col-sm-6 col-lg-3">
+    <div v-for="item in data" :key="item.id" class="col-12 col-sm-6 col-lg-3 mb-4">
         <button class="card btn p-0 m-0 w-100"
             data-toggle="modal" data-target="#grant_point_modal"
             @click="setGrantPoint(item.point, item.price, item.color)">
@@ -35,7 +35,7 @@
         </button>
     </div>
 
-        <div class="modal fade" id="grant_point_modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal fade" id="grant_point_modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <!-- ポイントを贈った後のモーダル画面 -->
         <div v-if="this.grant_point_result" class="modal-dialog">
             <div class="modal-content text-dark">
@@ -44,8 +44,8 @@
                         <small>ポイントを購入しました。</small>
                     </h5>
                     <div>
-                        <small>所持ポイント</small>
-                        <span class="badge badge-primary badge-pill pt-1 mx-1" style="font-size: 14px;">{{ available_point.toLocaleString() }}</span>
+                        <small>贈れるポイント</small>
+                        <span class="badge badge-primary badge-pill pt-1 ml-1 mr-sm-1" style="font-size: 14px;">{{ available_point.toLocaleString() }}</span>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -65,7 +65,7 @@
                         <small>ptを購入しますか？</small>
                     </h5>
                     <div>
-                        <small>所持ポイント</small>
+                        <small>贈れるポイント</small>
                         <span class="badge badge-primary badge-pill pt-1 mx-1" style="font-size: 14px;">{{ available_point.toLocaleString() }}</span>
                     </div>
                 </div>

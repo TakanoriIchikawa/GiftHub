@@ -19,7 +19,7 @@
         </div>
         <div class="col-12 col-md-11 col-lg-10">
             <div class="row">
-                <div v-for="friend in friends" :key="friend.id" class="col-12 col-sm-6 col-md-4 col-lg-3 col-md-4 mb-2">
+                <div v-for="friend in friends" :key="friend.id" class="col-12 col-sm-6 col-md-4 col-lg-3 col-md-4 mb-2 mb-sm-3">
                     <div class="card w-100 p-0 m-0">
                         <div class="card-body p-2 w-100">
                             <div class="d-flex justify-content-between mx-3 mx-lg-0">

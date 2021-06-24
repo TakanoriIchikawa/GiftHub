@@ -26,7 +26,7 @@
                         <div class="pl-2">{{ receive_name }}さんへポイントを贈ります。</div>
                     </div>
                     <div class="pt-2">
-                        <label class="small">所持ポイント</label>
+                        <label class="small">贈れるポイント</label>
                         <span class="badge badge-primary badge-pill pt-1 mx-1" style="font-size: 14px;">{{ available_point.toLocaleString() }}</span>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-7 col-sm-6 offset-sm-1 form-group form-row mb-1">
-                                <ValidationProvider name="ポイント" rules="required|min_value:1|max_value:1000" v-slot="{ errors }">
+                                <ValidationProvider name="ポイント" rules="required|min_value:1|max_value:2000" v-slot="{ errors }">
                                 <div class="input-group">
                                     <input type="text" v-model="give_point" class="form-control form-control-sm text-right" placeholder="0">
                                     <label class="col-form-label small px-1 mr-sm-3"> /{{ available_point.toLocaleString() }}pt</label>

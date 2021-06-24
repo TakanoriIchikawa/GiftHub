@@ -12,5 +12,6 @@ class GiftItem extends Model
         'gift_category_id',
         'name',
         'point',
+        'image',
     ];
 }
