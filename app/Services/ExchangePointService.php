@@ -40,7 +40,7 @@ class ExchangePointService
 
     /**
      * exchangePoint function
-     * 景品とポイントを交換
+     * ポイントと景品を交換
      * @param array $params
      * @return boolean
      */

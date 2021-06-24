@@ -32,7 +32,7 @@ class ExchangePointController extends Controller
 
     /**
      * exchangePoint function
-     * 景品とポイントを交換し、レスポンスを返す
+     * ポイントと景品を交換し、レスポンスを返す
      * @param Request $request
      * @return json
      */
