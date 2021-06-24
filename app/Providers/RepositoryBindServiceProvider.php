@@ -34,6 +34,10 @@ class RepositoryBindServiceProvider extends ServiceProvider
             \App\Repositories\GivePoint\GivePointRepository::class
         );
         $this->app->bind(
+            \App\Repositories\ExchangePoint\ExchangePointRepositoryInterface::class,
+            \App\Repositories\ExchangePoint\ExchangePointRepository::class
+        );
+        $this->app->bind(
             \App\Repositories\GiftItem\GiftItemRepositoryInterface::class,
             \App\Repositories\GiftItem\GiftItemRepository::class
         );

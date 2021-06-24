@@ -57,3 +57,9 @@ Route::get('/get/gift/categories', 'Api\GiftCategoryController@getGiftCategories
 
 // 景品のアイテム取得
 Route::get('/get/gift/items', 'Api\GiftItemController@getGiftItems')->name('get.gift.items');
+
+// 景品交換できるポイント取得
+Route::get('/get/exchangeable-point', 'Api\ExchangePointController@getExchangeablePoint')->name('get.exchangeable.point');
+
+// ポイントと景品を交換
+Route::post('/exchange/point', 'Api\ExchangePointController@exchangePoint')->name('exchange.point');

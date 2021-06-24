@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FriendsTableSeeder::class);
         $this->call(ChatMessagesTableSeeder::class);
         $this->call(GrantPointsTableSeeder::class);
+        $this->call(GivePointsTableSeeder::class);
         $this->call(GiftCategoriesTableSeeder::class);
         $this->call(GiftItemsTableSeeder::class);
     }

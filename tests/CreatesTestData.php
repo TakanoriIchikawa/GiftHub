@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Friend;
 use App\Models\ChatMessage;
 use App\Models\GrantPoint;
+use App\Models\GivePoint;
 
 trait CreatesTestData
 {
@@ -129,4 +130,41 @@ trait CreatesTestData
         }
     }
 
+    public function createTestGivePoints(int $userId): void
+    {
+        $data = [
+            [
+                'give_point' => 2000,
+                'give_user_id' => $userId,
+                'receive_user_id' => 2,
+                'signature' => true,
+                'message' => 'ありがとう',
+            ],
+            [
+                'give_point' => 1000,
+                'give_user_id' => $userId,
+                'receive_user_id' => 3,
+                'signature' => true,
+                'message' => 'ありがとう',
+            ],
+            [
+                'give_point' => 2000,
+                'give_user_id' => 2,
+                'receive_user_id' => $userId,
+                'signature' => true,
+                'message' => 'ありがとう',
+            ],
+            [
+                'give_point' => 2000,
+                'give_user_id' => 3,
+                'receive_user_id' => $userId,
+                'signature' => true,
+                'message' => 'ありがとう',
+            ],
+        ];
+
+        foreach ($data as $givePoint) {
+            GivePoint::create($givePoint);
+        }
+    }
 }

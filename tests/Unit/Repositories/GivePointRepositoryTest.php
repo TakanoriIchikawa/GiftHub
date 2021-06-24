@@ -3,6 +3,7 @@
 namespace Tests\Unit\Repositories;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\GivePoint\GivePointRepositoryInterface;
 use Tests\TestCase;
 
@@ -21,7 +22,10 @@ class GivePointRepositoryTest extends TestCase
     public function setup(): void
     {
         parent::setUp();
+        $this->user = $this->createTestUser();
+        $this->createTestGivePoints($this->user->id);
         $this->givePointRepository = app(GivePointRepositoryInterface::class);
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -39,6 +43,30 @@ class GivePointRepositoryTest extends TestCase
             $result = true;
         }
 
+        $this->assertTrue($result);
+    }
+
+    /**
+     * testGetGivePoints function
+     * 贈ったポイントの一覧取得のテスト
+     * @return void
+     */
+    public function testGetGivePoints(): void
+    {
+        $givePoints = $this->givePointRepository->getGivePoints();
+        $result = $givePoints->where('give_point', 2000)->isNotEmpty();
+        $this->assertTrue($result);
+    }
+
+    /**
+     * testGetReceivePoints function
+     * 貰ったポイントの一覧取得のテスト
+     * @return void
+     */
+    public function testGetReceivePoints()
+    {
+        $receivePoints = $this->givePointRepository->getReceivePoints();
+        $result = $receivePoints->where('give_point', 2000)->isNotEmpty();
         $this->assertTrue($result);
     }
 }

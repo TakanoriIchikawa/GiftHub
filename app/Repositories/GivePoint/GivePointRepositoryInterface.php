@@ -11,4 +11,18 @@ interface GivePointRepositoryInterface
      * @return object
      */
     public function create(array $params): object;
+
+    /**
+     * getGivePoints function
+     * 贈ったポイントの一覧を取得
+     * @return object
+     */
+    public function getGivePoints(): object;
+
+    /**
+     * getReceivePoints function
+     * 貰ったポイントの一覧を取得
+     * @return object
+     */
+    public function getReceivePoints(): object;
 }

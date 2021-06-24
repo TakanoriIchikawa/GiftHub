@@ -27,20 +27,11 @@ class GiftItemRepositoryTest extends TestCase
     {
         // 景品カテゴリID：1
         $giftItems = $this->giftItemRepository->getGiftItems(1);
-        $result = $giftItems->where('name', '赤ちゃんのおもちゃA')->isNotEmpty();
+        $result = $giftItems->where('name', 'はらぺこあおむし1')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftItems->where('name', '赤ちゃんのおもちゃB')->isNotEmpty();
+        $result = $giftItems->where('name', 'はらぺこあおむし2')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftItems->where('name', 'お子様のおもちゃA')->isEmpty();
+        $result = $giftItems->where('name', 'テスト1')->isEmpty();
         $this->assertTrue($result);
-
-        // 景品カテゴリID：2
-        $giftItems = $this->giftItemRepository->getGiftItems(2);
-        $result = $giftItems->where('name', 'お子様のおもちゃA')->isNotEmpty();
-        $this->assertTrue($result);
-        $result = $giftItems->where('name', 'お子様のおもちゃB')->isNotEmpty();
-        $this->assertTrue($result);
-        $result = $giftItems->where('name', '赤ちゃんのおもちゃA')->isEmpty();
-        $this->asserttrue($result);
     }
 }

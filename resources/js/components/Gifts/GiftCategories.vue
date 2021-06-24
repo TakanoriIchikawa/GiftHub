@@ -20,7 +20,7 @@
                     <div class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img v-bind:src="'/assets/img/gifts/' + category.image_name" class="d-block img-fluid">
+                                <img :src="'/assets/img/gifts/categories/' + category.image" class="d-block img-fluid">
                                 <div class="carousel-caption">
                                     <h3>{{ category.title }}</h3>
                                     <p>Earn points and win your favorite gifts.</p>

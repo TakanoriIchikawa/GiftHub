@@ -8,6 +8,11 @@ use App\Services\GivePointService;
 
 class GivePointController extends Controller
 {
+    /**
+     * GivePointController __construct
+     *
+     * @param GivePointService $givePointService
+     */
     public function __construct(
         GivePointService $givePointService
     ) {

@@ -9,6 +9,12 @@ use App\Repositories\GrantPoint\GrantPointRepositoryInterface;
 
 class GivePointService
 {
+    /**
+     * GivePointService __construct
+     *
+     * @param GivePointRepositoryInterface $givePointRepository
+     * @param GrantPointRepositoryInterface $grantPointRepository
+     */
     public function __construct(
         GivePointRepositoryInterface $givePointRepository,
         GrantPointRepositoryInterface $grantPointRepository
@@ -53,6 +59,28 @@ class GivePointService
         }
 
         return true;
+    }
+
+    /**
+     * getGivePoint function
+     * 贈ったポイントを取得
+     * @return void
+     */
+    public function getGivePoint()
+    {
+        $givePoints = $this->givePointRepository->getGivePoints();
+        return $givePoints->sum('give_point');
+    }
+
+    /**
+     * getReceivePoint function
+     * 貰ったポイントを取得
+     * @return void
+     */
+    public function getReceivePoint()
+    {
+        $receivePoints = $this->givePointRepository->getReceivePoints();
+        return $receivePoints->sum('give_point');
     }
     
     /**

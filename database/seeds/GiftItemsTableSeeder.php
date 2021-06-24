@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\GiftCategory;
 use App\Models\GiftItem;
 
 class GiftItemsTableSeeder extends Seeder
@@ -15,53 +16,45 @@ class GiftItemsTableSeeder extends Seeder
         $data = [
             [
                 'gift_category_id' => 1,
-                'name' => '赤ちゃんのおもちゃA',
-                'point' => 1500,
-            ],
-            [
-                'gift_category_id' => 1,
-                'name' => '赤ちゃんのおもちゃB',
-                'point' => 1000,
-            ],
-            [
-                'gift_category_id' => 1,
-                'name' => '赤ちゃんのおもちゃC',
-                'point' => 700,
-            ],
-            [
-                'gift_category_id' => 2,
-                'name' => 'お子様のおもちゃA',
-                'point' => 3000,
-            ],
-            [
-                'gift_category_id' => 2,
-                'name' => 'お子様のおもちゃB',
+                'name' => 'はらぺこあおむし1',
                 'point' => 2000,
-            ], 
-            [
-                'gift_category_id' => 2,
-                'name' => 'お子様のおもちゃC',
-                'point' => 1000,
+                'image' => 'harapeko1.jpg',
             ],
             [
-                'gift_category_id' => 3,
-                'name' => 'お菓子A',
-                'point' => 1200,
+                'gift_category_id' => 1,
+                'name' => 'はらぺこあおむし2',
+                'point' => 2500,
+                'image' => 'harapeko2.jpg',
             ],
             [
-                'gift_category_id' => 3,
-                'name' => 'お菓子B',
-                'point' => 600,
-            ], 
+                'gift_category_id' => 1,
+                'name' => 'はらぺこあおむし3',
+                'point' => 1700,
+                'image' => 'harapeko3.jpg',
+            ],
             [
-                'gift_category_id' => 3,
-                'name' => 'お菓子C',
-                'point' => 300,
+                'gift_category_id' => 1,
+                'name' => 'はらぺこあおむし4',
+                'point' => 1300,
+                'image' => 'harapeko4.jpg',
             ],
         ];
 
         foreach ($data as $item) {
             GiftItem::create($item);
+        }
+
+        $giftCategories = GiftCategory::get();
+        foreach ($giftCategories as $key => $value) {
+            for ($i=1; $i<=10; $i++) {
+                $data = [
+                    'gift_category_id' => $value->id,
+                    'name' => $value->title2 .$i,
+                    'point' => 500 * $i,
+                    'image' => 'noimage.jpg',
+                ];
+                GiftItem::create($data);
+            }
         }
     }
 }

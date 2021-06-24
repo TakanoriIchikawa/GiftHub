@@ -25,24 +25,14 @@ class GiftItemServiceTest extends TestCase
      */
     public function testGetGiftItems(): void
     {
-        // 景品カテゴリID：1
-        $giftCategoryId = 1;
-        $giftItems = $this->giftItemService->getGiftItems($giftCategoryId);
-        $result = $giftItems->where('name', '赤ちゃんのおもちゃA')->isNotEmpty();
-        $this->assertTrue($result);
-        $result = $giftItems->where('name', '赤ちゃんのおもちゃB')->isNotEmpty();
-        $this->assertTrue($result);
-        $result = $giftItems->where('name', 'お子様のおもちゃA')->isEmpty();
-        $this->assertTrue($result);
 
-        // 景品カテゴリID：2
-        $giftCategoryId = 2;
-        $giftItems = $this->giftItemService->getGiftItems($giftCategoryId);
-        $result = $giftItems->where('name', 'お子様のおもちゃA')->isNotEmpty();
+        // 景品カテゴリID：1
+        $giftItems = $this->giftItemService->getGiftItems(1);
+        $result = $giftItems->where('name', 'はらぺこあおむし1')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftItems->where('name', 'お子様のおもちゃB')->isNotEmpty();
+        $result = $giftItems->where('name', 'はらぺこあおむし2')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftItems->where('name', '赤ちゃんのおもちゃA')->isEmpty();
+        $result = $giftItems->where('name', 'テスト1')->isEmpty();
         $this->assertTrue($result);
     }
 }
