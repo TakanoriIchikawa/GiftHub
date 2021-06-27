@@ -8,6 +8,11 @@ use App\Services\DashboardService;
 
 class DashboardController extends Controller
 {
+    /**
+     * DashboardController __construct
+     *
+     * @param DashboardService $dashboardService
+     */
     public function __construct(
         DashboardService $dashboardService
     ) {
@@ -15,6 +20,11 @@ class DashboardController extends Controller
         $this->dashboardService = $dashboardService;
     }
 
+    /**
+     * getDashboardData function
+     * ダッシュボードに表示するデータを取得、レスポンスを返す
+     * @return json
+     */
     public function getDashboardData()
     {
         $points = $this->dashboardService->getDashboardPoints();

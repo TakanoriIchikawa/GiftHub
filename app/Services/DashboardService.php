@@ -10,6 +10,15 @@ use App\Repositories\ExchangePoint\ExchangePointRepositoryInterface;
 
 class DashboardService
 {
+    /**
+     * DashboardService __construct
+     *
+     * @param GrantPointService $grantPointService
+     * @param GivePointService $givePointService
+     * @param ExchangePointService $exchangePointService
+     * @param GivePointRepositoryInterface $givePointRepository
+     * @param ExchangePointRepositoryInterface $exchangePointRepository
+     */
     public function __construct(
         GrantPointService $grantPointService,
         GivePointService $givePointService,
@@ -24,7 +33,12 @@ class DashboardService
         $this->exchangePointRepository = $exchangePointRepository;
     }
 
-    public function getDashboardPoints()
+    /**
+     * getDashboardPoints function
+     * 各ポイントの一覧を取得
+     * @return array
+     */
+    public function getDashboardPoints(): array
     {
         $availablePoint = $this->grantPointService->getAvailablePoint();
         $gavePoint = $this->givePointService->getGivePoint();
@@ -40,7 +54,12 @@ class DashboardService
         return $points;
     }
 
-    public function getDashboardList()
+    /**
+     * getDashboardList function
+     * 直近の各やりとりを取得
+     * @return array
+     */
+    public function getDashboardList(): array
     {
         $givePoints = $this->givePointRepository->getGivePoints()->sortByDesc('id')->take(5);
         $receivePoints = $this->givePointRepository->getReceivePoints()->sortByDesc('id')->take(5);
