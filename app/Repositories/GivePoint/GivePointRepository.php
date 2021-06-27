@@ -38,6 +38,7 @@ class GivePointRepository implements GivePointRepositoryInterface
     {
         $userId = Auth::id();
         return $this->model
+                    ->with('receivePointUser')
                     ->where('give_user_id', $userId)
                     ->get();
     }
@@ -51,6 +52,7 @@ class GivePointRepository implements GivePointRepositoryInterface
     {
         $userId = Auth::id();
         return $this->model
+                    ->with('givePointUser')
                     ->where('receive_user_id', $userId)
                     ->get();
     }

@@ -27,6 +27,7 @@ class ExchangePointRepository implements ExchangePointRepositoryInterface
     {
         $userId = Auth::id();
         return $this->model
+                    ->with('giftItem')
                     ->where('user_id', $userId)
                     ->get();
     }

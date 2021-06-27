@@ -38,6 +38,5 @@ class Friend extends Model
         return $this->hasOne(ChatMessage::class, 'send_user_id', 'friend_id')
                     ->where('receive_user_id', $userId)
                     ->orderBy('id', 'desc');
-
     }
 }

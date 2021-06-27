@@ -63,3 +63,6 @@ Route::get('/get/exchangeable-point', 'Api\ExchangePointController@getExchangeab
 
 // ポイントと景品を交換
 Route::post('/exchange/point', 'Api\ExchangePointController@exchangePoint')->name('exchange.point');
+
+// ダッシュボード
+Route::get('/get/dashboard/data', 'Api\DashboardController@getDashboardData')->name('get.dashboard.data');
