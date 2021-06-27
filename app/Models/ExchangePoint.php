@@ -13,4 +13,9 @@ class ExchangePoint extends Model
         'gift_item_id',
         'exchange_point',
     ];
+
+    public function giftItem()
+    {
+        return $this->belongsTo(GiftItem::class, 'gift_item_id', 'id');
+    }
 }

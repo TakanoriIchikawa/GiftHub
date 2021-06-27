@@ -20,8 +20,8 @@
         </CHeaderNavLink>
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/users" exact>
-          Users
+        <CHeaderNavLink to="/friends" exact>
+          Friends
         </CHeaderNavLink>
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">

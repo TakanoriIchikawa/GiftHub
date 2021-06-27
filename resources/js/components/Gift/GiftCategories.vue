@@ -3,12 +3,7 @@
 <div class="row">
     <div v-for="category in giftCategories" :key="category.id" class="col-12 col-sm-6 col-md-4">
         <div class="card">
-            <router-link :to="{
-                name:'Items',
-                params:{
-                    gift_category_id:category.id,
-                }
-            }">
+            <router-link :to="{ name:'Items', params:{ gift_category_id:category.id,}}">
                 <header class="card-header text-dark">
                     <i class="fs-18 pr-1" v-bind:class="category.icon"></i>
                     <strong>{{ category.title1 }}</strong>

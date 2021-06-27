@@ -16,6 +16,7 @@ class ExchangePointController extends Controller
     public function __construct(
         ExchangePointService $exchangePointService
     ) {
+        $this->middleware('auth');
         $this->exchangePointService = $exchangePointService;
     }
 

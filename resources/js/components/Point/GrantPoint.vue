@@ -152,17 +152,17 @@ export default {
                     discount: 0,
                     color: 'primary'
                 },
-                success: {
+                info: {
                     point: 3000,
                     price: 2550,
                     discount: 15,
-                    color: 'success'
+                    color: 'info'
                 },
-                warning: {
+                success: {
                     point: 5000,
                     price: 3500,
                     discount: 30,
-                    color: 'warning'
+                    color: 'success'
                 },
                 dabger: {
                     point: 10000,

@@ -15,4 +15,14 @@ class GivePoint extends Model
         'signature',
         'message',
     ];
+
+    public function givePointUser()
+    {
+        return $this->belongsTo(User::class, 'give_user_id', 'id');
+    }
+
+    public function receivePointUser()
+    {
+        return $this->belongsTo(User::class, 'receive_user_id', 'id');
+    }
 }

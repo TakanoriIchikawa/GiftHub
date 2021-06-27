@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import GivePoint from '../Points/GivePoint'
+import GivePoint from '../Point/GivePoint'
 
 export default {
     components: {

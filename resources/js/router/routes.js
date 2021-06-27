@@ -6,15 +6,15 @@ import Login from '../components/Auth/Login.vue';
 import App from '../components/Layouts/App.vue'
 
 // 子コンポーネント
-import Dashboard from '../components/Theme/Dashboard.vue';
-import GivePoint from '../components/Points/GivePoint.vue';
-import GrantPoint from '../components/Points/GrantPoint.vue';
-import FriendList from '../components/Friends/FriendList.vue';
-import FriendAdd from '../components/Friends/FriendAdd.vue';
+import Dashboard from '../components/Dashboard/Dashboard.vue';
+import GivePoint from '../components/Point/GivePoint.vue';
+import GrantPoint from '../components/Point/GrantPoint.vue';
+import FriendList from '../components/Friend/FriendList.vue';
+import FriendAdd from '../components/Friend/FriendAdd.vue';
 import ChatList from '../components/Chat/ChatList.vue';
 import ChatRoom from '../components/Chat/ChatRoom.vue';
-import GiftCategories from '../components/Gifts/GiftCategories.vue';
-import GiftItems from '../components/Gifts/GiftItems.vue';
+import GiftCategories from '../components/Gift/GiftCategories.vue';
+import GiftItems from '../components/Gift/GiftItems.vue';
 import History from '../components/History/History.vue';
 
 const routes = [
