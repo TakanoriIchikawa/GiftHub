@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Friend\FriendRepositoryInterface;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
@@ -39,8 +42,95 @@ class UserService
         return $this->userRepository->searchUsers($userName, $excludeFriendIds);
     }
 
-    public function findUser($userId)
+    /**
+     * findUser function
+     * ユーザー情報を取得
+     * @param integer|null $userId
+     * @return object
+     */
+    public function findUser(?int $userId = null): object
     {
+        if (empty($userId)) {
+            $userId = Auth::id();
+        }
         return $this->userRepository->findUser($userId);
+    }
+
+    /**
+     * updateProfile function
+     * プロフィールを更新
+     * @param object $request
+     * @return boolean
+     */
+    public function updateProfile(object $request): bool
+    {
+        $params = $request->all();
+        if ($request->file('image')) {
+            $params['image'] = $this->setImageName($request);
+        }
+
+        $user = $this->userRepository->findUser(Auth::id());
+        $user->fill($params);
+
+        DB::beginTransaction();
+        try {
+            $this->userRepository->update($user);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * uploadUserImage function
+     * ユーザー画像のアップロード
+     * @param object $request
+     * @return string 
+     */
+    public function uploadUserImage(object $request): string
+    {
+        $imagePath = 'public/img/avatars/';
+        $imageName = $this->setImageName($request);
+        Storage::delete($imagePath .$imageName);
+        return $request->file('image')->storeAs($imagePath, $imageName);
+    }
+
+    /**
+     * setImageName function
+     * 画像ファイル名を設定
+     * @param object $request
+     * @return string 
+     */
+    private function setImageName(object $request): string
+    {
+        return Auth::id() .'.' .$request->file('image')->getClientOriginalExtension();
+    }
+
+    /**
+     * validateParams function
+     * パラメータの検証
+     * @param array $params
+     * @return boolean
+     */
+    public function validateParams(array $params): bool
+    {
+        if (!isset($params['name']) || !isset($params['name'])) {
+            return false;
+        }
+        $name = $params['name'];
+        $email = $params['email'];
+
+        if (empty($name) || mb_strlen($name) > 100) {
+            return false;
+        } 
+
+        if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            return false;
+        } 
+
+        return true;
     }
 }

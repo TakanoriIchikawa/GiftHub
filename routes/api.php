@@ -28,6 +28,9 @@ Route::get('/search/users', 'Api\UserController@searchUsers')->name('search.user
 // ユーザー取得
 Route::get('/find/user', 'Api\UserController@findUser')->name('find.user');
 
+// プロフィール更新
+Route::post('/update/profile', 'Api\UserController@updateProfile')->name('update.profile');
+
 // 友達検索
 Route::get('/search/friends', 'Api\FriendController@searchFriends')->name('search.friends');
 

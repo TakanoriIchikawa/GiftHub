@@ -6,7 +6,7 @@
             <header class="card-header">
                 <div class="d-flex align-items-center">
                     <div class="c-avatar">
-                        <img :src="'/assets/img/avatars/' + receive_user_image" class="c-avatar-img">
+                        <img :src="'/storage/img/avatars/' + receive_user_image" class="c-avatar-img">
                         <span class="c-avatar-status bg-success"></span>
                     </div>
                     <strong class="pl-3">{{ receive_user_name }}</strong>
@@ -19,7 +19,7 @@
                     </div>
                     <div v-else class="d-flex">
                         <div class="c-avatar">
-                            <img :src="'/assets/img/avatars/' + receive_user_image" class="c-avatar-img">
+                            <img :src="'/storage/img/avatars/' + receive_user_image" class="c-avatar-img">
                             <span class="c-avatar-status bg-success"></span>
                         </div>
                         <div class="message-left">

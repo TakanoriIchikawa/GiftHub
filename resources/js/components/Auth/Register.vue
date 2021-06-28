@@ -21,59 +21,59 @@
                     </div>
 
                     <ValidationProvider name="名前" rules="required|max:100" v-slot="{ errors }">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="/assets/coreui.icon.svg#cil-user"></use>
-                                </svg>
-                            </span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg class="c-icon">
+                                        <use xlink:href="/assets/coreui.icon.svg#cil-user"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <input class="form-control" type="text" v-model="user.name" placeholder="User Name">
                         </div>
-                        <input class="form-control" type="text" v-model="user.name" placeholder="User Name">
-                    </div>
-                    <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
+                        <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
                     </ValidationProvider>
 
                     <ValidationProvider name="メールアドレス" rules="required|email|max:100" v-slot="{ errors }">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="/assets/coreui.icon.svg#cil-envelope-closed"></use>
-                                </svg>
-                            </span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg class="c-icon">
+                                        <use xlink:href="/assets/coreui.icon.svg#cil-envelope-closed"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <input class="form-control" type="text" v-model="user.email" placeholder="Email">
                         </div>
-                        <input class="form-control" type="text" v-model="user.email" placeholder="Email">
-                    </div>
-                    <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
+                        <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
                     </ValidationProvider>
 
                     <ValidationProvider name="パスワード" rules="required|alpha_dash|min:6|max:100" vid="password" v-slot="{ errors }">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="/assets/coreui.icon.svg#cil-lock-locked"></use>
-                                </svg>
-                            </span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg class="c-icon">
+                                        <use xlink:href="/assets/coreui.icon.svg#cil-lock-locked"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <input class="form-control" type="password" name="password" v-model="user.password" placeholder="Password">
                         </div>
-                        <input class="form-control" type="password" name="password" v-model="user.password" placeholder="Password">
-                    </div>
-                    <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
+                        <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
                     </ValidationProvider>
 
                     <ValidationProvider name="確認用パスワード" rules="required|confirmed:password" v-slot="{ errors }">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <svg class="c-icon">
-                                    <use xlink:href="/assets/coreui.icon.svg#cil-lock-locked"></use>
-                                </svg>
-                            </span>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <svg class="c-icon">
+                                        <use xlink:href="/assets/coreui.icon.svg#cil-lock-locked"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <input class="form-control" type="password" v-model="user.password_confirmation" placeholder="Repeat password">
                         </div>
-                        <input class="form-control" type="password" v-model="user.password_confirmation" placeholder="Repeat password">
-                    </div>
-                    <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
+                        <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
                     </ValidationProvider>
                     
                     <button class="btn btn-block btn-success" type="submit" :disabled="invalid">Create Account</button>

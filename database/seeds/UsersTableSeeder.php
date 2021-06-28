@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         factory(User::class, 100)->create();
 
         $images = [
-            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'
+            'sample1.jpg', 'sample2.jpg', 'sample3.jpg', 'sample4.jpg', 'sample5.jpg', 'sample6.jpg', 'sample7.jpg', 'sample8.jpg'
         ];
 
         $users = User::get();
