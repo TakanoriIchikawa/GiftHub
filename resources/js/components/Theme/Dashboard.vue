@@ -190,8 +190,6 @@ export default {
             .then ( response => {
                 this.points = response.data.points
                 this.list = response.data.list
-
-                console.log(this.list)
             }).catch ( error => {
                 if (error.response.status === 401) {
                     this.$router.push({name:'Login'})

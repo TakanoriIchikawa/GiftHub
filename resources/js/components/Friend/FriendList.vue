@@ -31,15 +31,15 @@
                                     <div class="pl-2">{{ friend.user.name }}</div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge badge-success badge-pill py-1 px-2">{{ friend.sum_give_points }}</span>
+                                    <span class="badge badge-success badge-pill py-1 px-2">{{ friend.sum_give_points.toLocaleString() }}</span>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mx-3 mx-lg-0 pl-1 mt-2">
-                                <div class="d-flex">
-                                    <svg class="c-icon mt-2">
+                                <div class="d-flex pt-1">
+                                    <svg class="c-icon">
                                         <use xlink:href="/assets/coreui.icon.svg#cil-birthday-cake"></use>
                                     </svg>
-                                    <span class="mt-2 ml-2">2月23日</span>
+                                    <span class="ml-2">{{ friend.user.birth_month }}月{{ friend.user.birth_day }}日</span>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <button type="button" class="btn btn-sm btn-primary btn-pill"
@@ -106,6 +106,7 @@ export default {
                 }
             }).then ( response => {
                 this.friends = response.data
+                console.log(this.friends)
                 // 友達がいない場合は追加画面へ
                 if (!Object.keys(this.friends).length) {
                     this.$router.push({name:'FriendAdd'})

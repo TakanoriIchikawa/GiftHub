@@ -18,12 +18,12 @@
         <div v-else class="modal-dialog">
             <div class="modal-content text-dark">
                 <div class="modal-header">
-                    <div class="modal-title d-flex align-items-center justify-content-center mx-auto">
+                    <div class="modal-title d-flex align-items-center pl-3">
                         <div class="c-avatar">
                             <img :src="'/storage/img/avatars/' + receive_user_image" class="c-avatar-img">
                             <span class="c-avatar-status bg-success"></span>
                         </div>
-                        <div class="pl-2">{{ receive_name }}さんへポイントを贈ります。</div>
+                        <div class="pl-2 text-left">{{ receive_name }}さんへ</div>
                     </div>
                     <div class="pt-2">
                         <label class="small">贈れるポイント</label>

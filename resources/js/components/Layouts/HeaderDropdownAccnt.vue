@@ -1,4 +1,5 @@
 <template>
+  <label class="m-0" @click="getDashboardData">
   <CDropdown
     inNav
     class="c-header-nav-items"
@@ -9,72 +10,89 @@
       <CHeaderNavLink>
         <div class="c-avatar">
           <img
-            src="/storage/img/avatars/3.jpg"
+            :src="'/storage/img/avatars/1.jpg'"
             class="c-avatar-img"
           />
         </div>
       </CHeaderNavLink>
     </template>
     <CDropdownHeader tag="div" class="text-center" color="light">
-      <strong>Account</strong>
+      <strong>Points</strong>
     </CDropdownHeader>
     <CDropdownItem>
-      <CIcon name="cil-bell"/> Updates
-      <CBadge color="info" class="mfs-auto">{{ itemsCount }}</CBadge>
+      <CIcon name="cil-star"/> Available
+      <CBadge color="primary" class="mfs-auto">{{ points.available_point.toLocaleString() }}</CBadge>
     </CDropdownItem>
     <CDropdownItem>
-      <CIcon name="cil-envelope-open" /> Messages
-      <CBadge color="success" class="mfs-auto">{{ itemsCount }}</CBadge>
+      <CIcon name="cil-smile" /> Gave
+      <CBadge color="info" class="mfs-auto">{{ points.gave_point.toLocaleString() }}</CBadge>
     </CDropdownItem>
     <CDropdownItem>
-      <CIcon name="cil-task" /> Tasks
-      <CBadge color="danger" class="mfs-auto">{{ itemsCount }}</CBadge>
+      <CIcon name="cil-heart" /> Received
+      <CBadge color="success" class="mfs-auto">{{ points.received_point.toLocaleString() }}</CBadge>
     </CDropdownItem>
     <CDropdownItem>
-      <CIcon name="cil-comment-square" /> Comments
-      <CBadge color="warning" class="mfs-auto">{{ itemsCount }}</CBadge>
+      <CIcon name="cil-gift" /> Exchange
+      <CBadge color="danger" class="mfs-auto">{{ points.exchangeable_point.toLocaleString() }}</CBadge>
     </CDropdownItem>
-    <CDropdownHeader
-      tag="div"
-      class="text-center"
-      color="light"
-    >
+    <CDropdownHeader tag="div" class="text-center" color="light">
       <strong>Settings</strong>
     </CDropdownHeader>
-    <CDropdownItem>
+    <CDropdownItem href="/friends/list">
+      <CIcon name="cil-group" /> Friends
+      <CBadge color="primary" class="mfs-auto">20</CBadge>
+    </CDropdownItem>
+    <CDropdownItem href="/chat/list">
+      <CIcon name="cil-chat-bubble" /> Chat
+      <CBadge color="warning" class="mfs-auto">4</CBadge>
+    </CDropdownItem>
+
+    <CDropdownHeader tag="div" class="text-center" color="light">
+      <strong>Settings</strong>
+    </CDropdownHeader>
+    <CDropdownItem href="/profile">
       <CIcon name="cil-user" /> Profile
     </CDropdownItem>
     <CDropdownItem>
       <CIcon name="cil-settings" /> Settings
     </CDropdownItem>
-    <CDropdownItem>
-      <CIcon name="cil-dollar" /> Payments
-      <CBadge color="secondary" class="mfs-auto">{{ itemsCount }}</CBadge>
-    </CDropdownItem>
-    <CDropdownItem>
-      <CIcon name="cil-file" /> Projects
-      <CBadge color="primary" class="mfs-auto">{{ itemsCount }}</CBadge>
-    </CDropdownItem>
     <CDropdownDivider/>
-    <CDropdownItem>
-      <CIcon name="cil-shield-alt" /> Lock Account
-    </CDropdownItem>
     <CDropdownItem @click="logout()">
       <CIcon name="cil-lock-locked" /> Logout
     </CDropdownItem>
   </CDropdown>
+  </label>
+
 </template>
 
 <script>
 export default {
     methods: {
+        getDashboardData: async function() {
+            const url = '/api/get/dashboard/data'
+            await axios.get(url)
+            .then ( response => {
+                this.points = response.data.points
+                this.list = response.data.list
+            }).catch ( error => {
+                if (error.response.status === 401) {
+                    this.$router.push({name:'Login'})
+                } else {
+                    console.log(error)
+                }
+            })
+        },
         logout: async function() {
             await this.$store.dispatch('auth/logout')
             this.$router.push({name:'Login'})
-        }
+        },
   },
+      mounted() {
+        this.getDashboardData()
+    },
   data () {
-      return { 
+      return {
+          points: {},
           itemsCount: 42
       }
   }
