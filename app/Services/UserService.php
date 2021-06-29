@@ -57,18 +57,38 @@ class UserService
     }
 
     /**
-     * updateProfile function
-     * プロフィールを更新
-     * @param object $request
+     * validateParams function
+     * パラメータの検証
+     * @param array $params
      * @return boolean
      */
-    public function updateProfile(object $request): bool
+    public function validateParams(array $params): bool
     {
-        $params = $request->all();
-        if ($request->file('image')) {
-            $params['image'] = $this->setImageName($request);
+        if (!isset($params['name']) || !isset($params['name'])) {
+            return false;
         }
+        $name = $params['name'];
+        $email = $params['email'];
 
+        if (empty($name) || mb_strlen($name) > 100) {
+            return false;
+        } 
+
+        if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            return false;
+        } 
+
+        return true;
+    }
+
+    /**
+     * updateProfile function
+     * プロフィールを更新
+     * @param array $params
+     * @return boolean
+     */
+    public function updateProfile(array $params): bool
+    {
         $user = $this->userRepository->findUser(Auth::id());
         $user->fill($params);
 
@@ -104,33 +124,8 @@ class UserService
      * @param object $request
      * @return string 
      */
-    private function setImageName(object $request): string
+    public function setImageName(object $request): string
     {
         return Auth::id() .'.' .$request->file('image')->getClientOriginalExtension();
-    }
-
-    /**
-     * validateParams function
-     * パラメータの検証
-     * @param array $params
-     * @return boolean
-     */
-    public function validateParams(array $params): bool
-    {
-        if (!isset($params['name']) || !isset($params['name'])) {
-            return false;
-        }
-        $name = $params['name'];
-        $email = $params['email'];
-
-        if (empty($name) || mb_strlen($name) > 100) {
-            return false;
-        } 
-
-        if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            return false;
-        } 
-
-        return true;
     }
 }

@@ -55,13 +55,18 @@ class UserController extends Controller
      */
     public function updateProfile(Request $request)
     {
-        $result = $this->userService->validateParams($request->all());
+        $params = $request->all();
+        $result = $this->userService->validateParams($params);
         if (!$result) {
             $message = '入力内容が正しくありません。';
             return response()->json(['message' => $message], 422);
         }
 
-        $result = $this->userService->updateProfile($request);
+        if ($request->file('image')) {
+            $params['image'] = $this->userService->setImageName($request);
+        }
+
+        $result = $this->userService->updateProfile($params);
         if (!$result) {
             $message = '更新処理に失敗しました。';
             return response()->json(['message' => $message], 500);

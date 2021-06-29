@@ -15,6 +15,7 @@ class UserControllerTest extends TestCase
     {
         parent::setUp();
         $this->seed('UsersTableSeeder');
+        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
     }
     
     /**
@@ -24,8 +25,35 @@ class UserControllerTest extends TestCase
      */
     public function testSearchUsers(): void
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('search.users'));
+        $response->assertStatus(200);
+    }
+
+    /**
+     * testFindUser function
+     * ユーザー情報取得APIのテスト
+     * @return void
+     */
+    public function testFindUser(): void
+    {
+        $response = $this->json('GET', route('find.user'));
+        $response->assertStatus(200);
+    }
+
+        /**
+     * testUpdateProfile function
+     * プロフィール更新APIのテスト
+     * @return void
+     */
+    public function testUpdateProfile(): void
+    {
+
+        $response = $this->json('POST', route('update.profile'),
+            [
+                'name' => 'テスト',
+                'email' => 'test@test.com',
+            ]
+        );
         $response->assertStatus(200);
     }
 }
