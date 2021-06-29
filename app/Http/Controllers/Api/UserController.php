@@ -34,10 +34,47 @@ class UserController extends Controller
         return response()->json($users);
     }
 
+    /**
+     * findUser function
+     * ユーザー情報を取得し、レスポンスを返す
+     * @param Request $request
+     * @return json
+     */
     public function findUser(Request $request)
     {
         $userId = $request->user_id;
         $user = $this->userService->findUser($userId);
         return response()->json($user);
+    }
+
+    /**
+     * updateProfile function
+     * プロフィールを更新、レスポンスを返す
+     * @param Request $request
+     * @return json
+     */
+    public function updateProfile(Request $request)
+    {
+        $params = $request->all();
+        $result = $this->userService->validateParams($params);
+        if (!$result) {
+            $message = '入力内容が正しくありません。';
+            return response()->json(['message' => $message], 422);
+        }
+
+        if ($request->file('image')) {
+            $params['image'] = $this->userService->setImageName($request);
+        }
+
+        $result = $this->userService->updateProfile($params);
+        if (!$result) {
+            $message = '更新処理に失敗しました。';
+            return response()->json(['message' => $message], 500);
+        }
+
+        if ($request->file('image')) {
+            $this->userService->uploadUserImage($request);
+        }
+        return response()->json([], 200);
     }
 }

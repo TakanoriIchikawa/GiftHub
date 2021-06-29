@@ -14,4 +14,20 @@ interface UserRepositoryInterface
      * @return object
      */
     public function searchUsers(?string $userName = null, ?array $excludeFriendIds = []): object;
+
+    /**
+     * findUser function
+     * ユーザー情報を1件取得
+     * @param integer
+     * @return object
+     */
+    public function findUser(int $userId): object;
+
+    /**
+     * update function
+     * 更新処理
+     * @param object
+     * @return boolean
+     */
+    public function update($user): bool;
 }

@@ -46,8 +46,25 @@ class UserRepository implements UserRepositoryInterface
                     ->get();
     }
 
-    public function findUser($userId)
+    /**
+     * findUser function
+     * ユーザー情報を1件取得
+     * @param integer
+     * @return object
+     */
+    public function findUser(int $userId): object
     {
         return $this->model->find($userId);
+    }
+
+    /**
+     * update function
+     * 更新処理
+     * @param object
+     * @return boolean
+     */
+    public function update($user): bool
+    {
+        return $user->save();
     }
 }

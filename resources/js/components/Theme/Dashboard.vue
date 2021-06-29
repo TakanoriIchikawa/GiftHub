@@ -82,7 +82,7 @@
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
                                             <div class="c-avatar">
-                                                <img :src="'/assets/img/avatars/' + friend.receive_point_user.image" class="c-avatar-img">
+                                                <img :src="'/storage/img/avatars/' + friend.receive_point_user.image" class="c-avatar-img">
                                                 <span class="c-avatar-status bg-success"></span>
                                             </div>
                                             <div class="pl-3 text-dark">
@@ -119,7 +119,7 @@
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
                                             <div class="c-avatar">
-                                                <img :src="'/assets/img/avatars/' + friend.give_point_user.image" class="c-avatar-img">
+                                                <img :src="'/storage/img/avatars/' + friend.give_point_user.image" class="c-avatar-img">
                                                 <span class="c-avatar-status bg-success"></span>
                                             </div>
                                             <div class="pl-3 text-dark">
@@ -156,7 +156,7 @@
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
                                             <div class="c-avatar">
-                                                <img :src="'/assets/img/gifts/items/' + gift.gift_item.image" class="c-avatar-img">
+                                                <img :src="'/storage/img/gifts/items/' + gift.gift_item.image" class="c-avatar-img">
                                             </div>
                                             <div class="pl-3 text-dark">
                                                 <strong>{{ gift.gift_item.name }}</strong>
@@ -186,11 +186,10 @@ export default {
     methods: {
         getDashboardData: async function() {
             const url = '/api/get/dashboard/data'
-            await axios.get(url).then ( response => {
+            await axios.get(url)
+            .then ( response => {
                 this.points = response.data.points
                 this.list = response.data.list
-
-                console.log(this.list)
             }).catch ( error => {
                 if (error.response.status === 401) {
                     this.$router.push({name:'Login'})
