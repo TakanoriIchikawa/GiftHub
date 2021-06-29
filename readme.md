@@ -21,9 +21,11 @@ http://gift-hub/login
 - MySQL 5.6.43
 - AWS
     - EC2
+        - CentOS
         - nginx
         - php-fpm
     - S3
+    - VPC
     - SNS
 
 ## 機能
@@ -43,6 +45,7 @@ http://gift-hub/login
 - その他
     - ダッシュボード
     - プロフィール編集機能
+    - レスポンシブデザイン
 
 ## テスト
 PHPUnitl
