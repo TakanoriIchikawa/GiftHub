@@ -14,14 +14,14 @@ http://gift-hub/login
 レスポンシブ対応。テストコードも書いてます。  
 
 ## 使用技術
-- PHP 7.3.11
+- PHP 7.4.
 - Laravel 6.20.23
 - Vue.js 2.5.17
 - Bootstrap 4.6.0
-- MySQL 5.6.43
+- MySQL 5.7
 - AWS
     - EC2
-        - CentOS
+        - Amazon Linux 2
         - nginx
         - php-fpm
     - S3
