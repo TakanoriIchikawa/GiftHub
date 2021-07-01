@@ -14,7 +14,7 @@ http://gift-hub/login
 レスポンシブ対応。テストコードも書いてます。  
 
 ## 使用技術
-- PHP 7.4.
+- PHP 7.4.19
 - Laravel 6.20.23
 - Vue.js 2.5.17
 - Bootstrap 4.6.0
