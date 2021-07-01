@@ -1,7 +1,7 @@
 ## Gift Hub
 感謝の気持ちをポイントを贈ることで伝えるWebアプリケーションです。  
 貰ったポイントは好きな景品と交換できます。  
-http://gift-hub/login 
+http://54.238.172.200/login 
 | メールアドレス | パスワード |
 | ---- | ---- |
 | `chiaki0223@test.com` | `chiaki0223` |
@@ -18,12 +18,14 @@ http://gift-hub/login
 - Laravel 6.20.23
 - Vue.js 2.5.17
 - Bootstrap 4.6.0
-- MySQL 5.7
+- MySQL 8.0.20
 - AWS
     - EC2
         - Amazon Linux 2
         - nginx
         - php-fpm
+    - RDS
+        - MySQL
     - S3
     - VPC
     - SNS
