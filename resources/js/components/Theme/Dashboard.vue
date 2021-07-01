@@ -163,7 +163,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="badge badge-danger p-2 my-1" style="width: 55px;">
+                                            <span class="badge badge-danger p-2 my-2" style="width: 55px;">
                                                 {{ gift.exchange_point.toLocaleString() }}
                                                 <small>pt</small>
                                             </span>

@@ -18,7 +18,7 @@
         <div v-else class="modal-dialog">
             <div class="modal-content text-dark">
                 <div class="modal-header">
-                    <div class="modal-title d-flex align-items-center pl-3">
+                    <div class="modal-title d-flex align-items-center pl-sm-3">
                         <div class="c-avatar">
                             <img :src="'/storage/img/avatars/' + receive_user_image" class="c-avatar-img">
                             <span class="c-avatar-status bg-success"></span>
