@@ -63,7 +63,7 @@ class UserController extends Controller
         }
 
         if ($request->file('image')) {
-            $params['image'] = $this->userService->setImageName($request);
+            $params['image'] = $this->userService->setUserImage($request);
         }
 
         $result = $this->userService->updateProfile($params);

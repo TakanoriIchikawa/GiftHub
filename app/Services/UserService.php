@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
+    const IMG_AVATARS = 'img/avatars/';
     /**
      * UserService __construct
      *
@@ -91,17 +92,31 @@ class UserService
     {
         $user = $this->userRepository->findUser(Auth::id());
         $user->fill($params);
-
+        \Log::debug($params);
         DB::beginTransaction();
         try {
             $this->userRepository->update($user);
             DB::commit();
         } catch (\Exception $e) {
+            \Log::debug($e->getMessage());
             DB::rollback();
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * setUserImage function
+     * 画像ファイルの保存設定
+     * @param object $request
+     * @return string 
+     */
+    public function setUserImage(object $request): string
+    {
+        $imagePath = self::IMG_AVATARS;
+        $imageName = Auth::id() .'.' .$request->file('image')->getClientOriginalExtension();
+        return Storage::disk('s3')->url($imagePath .$imageName);
     }
 
     /**
@@ -112,20 +127,12 @@ class UserService
      */
     public function uploadUserImage(object $request): string
     {
-        $imagePath = 'public/img/avatars/';
-        $imageName = $this->setImageName($request);
-        Storage::delete($imagePath .$imageName);
-        return $request->file('image')->storeAs($imagePath, $imageName);
-    }
+        $imageFile = $request->file('image');
 
-    /**
-     * setImageName function
-     * 画像ファイル名を設定
-     * @param object $request
-     * @return string 
-     */
-    public function setImageName(object $request): string
-    {
-        return Auth::id() .'.' .$request->file('image')->getClientOriginalExtension();
+        $imagePath = self::IMG_AVATARS;
+        $imageName = Auth::id() .'.' .$imageFile->getClientOriginalExtension();
+
+        Storage::disk('s3')->delete($imagePath .$imageName);
+        return $imageFile->storeAs($imagePath, $imageName, ['disk' => 's3', 'visibility' => 'public']);
     }
 }

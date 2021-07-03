@@ -82,7 +82,7 @@
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
                                             <div class="c-avatar">
-                                                <img :src="'/storage/img/avatars/' + friend.receive_point_user.image" class="c-avatar-img">
+                                                <img :src="friend.receive_point_user.image" class="c-avatar-img">
                                                 <span class="c-avatar-status bg-success"></span>
                                             </div>
                                             <div class="pl-3 text-dark">
@@ -119,7 +119,7 @@
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
                                             <div class="c-avatar">
-                                                <img :src="'/storage/img/avatars/' + friend.give_point_user.image" class="c-avatar-img">
+                                                <img :src="friend.give_point_user.image" class="c-avatar-img">
                                                 <span class="c-avatar-status bg-success"></span>
                                             </div>
                                             <div class="pl-3 text-dark">
@@ -156,7 +156,7 @@
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
                                             <div class="c-avatar">
-                                                <img :src="'/storage/img/gifts/items/' + gift.gift_item.image" class="c-avatar-img">
+                                                <img :src="gift.gift_item.image" class="c-avatar-img">
                                             </div>
                                             <div class="pl-3 text-dark">
                                                 <strong>{{ gift.gift_item.name }}</strong>

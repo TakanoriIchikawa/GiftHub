@@ -25,7 +25,7 @@
                             <div class="d-flex justify-content-between mx-3 mx-lg-0">
                                 <div class="d-flex align-items-center">
                                     <div class="c-avatar">
-                                        <img :src="'/storage/img/avatars/' + friend.user.image" class="c-avatar-img">
+                                        <img :src="friend.user.image" class="c-avatar-img">
                                         <span class="c-avatar-status bg-success"></span>
                                     </div>
                                     <div class="pl-2">{{ friend.user.name }}</div>
@@ -106,7 +106,6 @@ export default {
                 }
             }).then ( response => {
                 this.friends = response.data
-                console.log(this.friends)
                 // 友達がいない場合は追加画面へ
                 if (!Object.keys(this.friends).length) {
                     this.$router.push({name:'FriendAdd'})

@@ -18,7 +18,7 @@
                         <li class="list-group-item d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <div class="c-avatar">
-                                    <img :src="'/storage/img/avatars/' + chat.user.image" class="c-avatar-img">
+                                    <img :src="chat.user.image" class="c-avatar-img">
                                     <span class="c-avatar-status bg-success"></span>
                                 </div>
                                 <div class="pl-3">

@@ -26,7 +26,7 @@
                         <div class="card-body p-2">
                             <div class="d-flex align-items-center">
                                 <div class="c-avatar">
-                                    <img :src="'/storage/img/avatars/' + user.image" class="c-avatar-img">
+                                    <img :src="user.image" class="c-avatar-img">
                                     <span class="c-avatar-status bg-success"></span>
                                 </div>
                                 <div class="pl-2">{{ user.name }}</div>
@@ -62,7 +62,7 @@
                 <div class="modal-body">
                     <div class="d-flex align-items-center justify-content-center">
                         <div class="c-avatar">
-                            <img :src="'/storage/img/avatars/' + friend_user_image" class="c-avatar-img">
+                            <img :src="friend_user_image" class="c-avatar-img">
                             <span class="c-avatar-status bg-success"></span>
                         </div>
                         <div class="pl-2">{{ friend_name }}</div>

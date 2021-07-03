@@ -20,7 +20,7 @@ class CreateGiftCategoriesTable extends Migration
             $table->string('title1', 100);
             $table->string('title2', 100);
             $table->string('icon', 50)->nullable();
-            $table->string('image', 50)->default('noimage.jpg');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
