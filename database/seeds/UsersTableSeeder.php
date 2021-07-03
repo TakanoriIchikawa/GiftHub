@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,11 +13,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $imagePath = Storage::disk('s3')->url('img/avatars/');
         $data= [
             [
                 'name' => '市川千耀',
                 'email' => 'chiaki0223@icloud.com',
-                'image' => 'chiaki.jpg',
                 'password' => bcrypt('chiaki0223'),
             ],
             [
@@ -43,7 +44,7 @@ class UsersTableSeeder extends Seeder
         $users = User::get();
         foreach ($users as $user) {
             $key = array_rand($images);
-            $image = $images[$key];
+            $image = $imagePath .$images[$key];
             $data = [
                 'image' => $image,
                 'birth_year' => mt_rand(1995, 2020),

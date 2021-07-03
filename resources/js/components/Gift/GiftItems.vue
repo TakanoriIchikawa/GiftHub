@@ -10,7 +10,7 @@
                 <span class="badge badge-success badge-pill py-1">{{ item.point.toLocaleString() }}</span>
             </header>
             <div class="card-body">
-                <img :src="'/storage/img/gifts/items/' + item.image" class="d-block img-fluid">
+                <img :src="item.image" class="d-block img-fluid">
             </div>
         </button>
     </div>
@@ -48,7 +48,7 @@
                     <div class="modal-body">
                         <h4 class="text-center">{{ exchange_gift_item_name }}</h4>
                         <div class="px-5">
-                            <img :src="'/storage/img/gifts/items/' + exchange_gift_item_image" class="d-block img-fluid">
+                            <img :src="exchange_gift_item_image" class="d-block img-fluid">
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-between align-items-center">

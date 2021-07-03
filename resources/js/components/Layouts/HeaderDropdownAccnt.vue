@@ -10,7 +10,8 @@
       <CHeaderNavLink>
         <div class="c-avatar">
           <img
-            :src="'/storage/img/avatars/1.jpg'"
+            v-show="user_image"
+            :src="user_image"
             class="c-avatar-img"
           />
         </div>
@@ -68,6 +69,19 @@
 <script>
 export default {
     methods: {
+        findUser: async function() {
+            const url = '/api/find/user'
+            await axios.get(url)
+            .then (response => {
+                this.user_image = response.data.image
+            }).catch ( error => {
+                if (error.response.status === 401) {
+                    this.$router.push({name:'Login'})
+                } else {
+                    console.log(error)
+                }
+            })
+        },
         getDashboardData: async function() {
             const url = '/api/get/dashboard/data'
             await axios.get(url)
@@ -86,14 +100,15 @@ export default {
             await this.$store.dispatch('auth/logout')
             this.$router.push({name:'Login'})
         },
-  },
-      mounted() {
+    },
+    mounted() {
+        this.findUser(),
         this.getDashboardData()
     },
   data () {
       return {
           points: {},
-          itemsCount: 42
+          user_image: '',
       }
   }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\GiftCategory;
 use App\Models\GiftItem;
+use Illuminate\Support\Facades\Storage;
 
 class GiftItemsTableSeeder extends Seeder
 {
@@ -13,30 +14,31 @@ class GiftItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        $imagePath = Storage::disk('s3')->url('img/gifts/items/');
         $data = [
             [
                 'gift_category_id' => 1,
                 'name' => 'はらぺこあおむし1',
                 'point' => 2000,
-                'image' => 'harapeko1.jpg',
+                'image' => $imagePath .'harapeko1.jpg',
             ],
             [
                 'gift_category_id' => 1,
                 'name' => 'はらぺこあおむし2',
                 'point' => 2500,
-                'image' => 'harapeko2.jpg',
+                'image' => $imagePath .'harapeko2.jpg',
             ],
             [
                 'gift_category_id' => 1,
                 'name' => 'はらぺこあおむし3',
                 'point' => 1700,
-                'image' => 'harapeko3.jpg',
+                'image' => $imagePath .'harapeko3.jpg',
             ],
             [
                 'gift_category_id' => 1,
                 'name' => 'はらぺこあおむし4',
                 'point' => 1300,
-                'image' => 'harapeko4.jpg',
+                'image' => $imagePath .'harapeko4.jpg',
             ],
         ];
 
@@ -51,7 +53,7 @@ class GiftItemsTableSeeder extends Seeder
                     'gift_category_id' => $value->id,
                     'name' => $value->title2 .$i,
                     'point' => 500 * $i,
-                    'image' => 'noimage.jpg',
+                    'image' => $imagePath .'noimage.jpg',
                 ];
                 GiftItem::create($data);
             }

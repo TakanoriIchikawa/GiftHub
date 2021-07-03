@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\GiftCategory;
+use Illuminate\Support\Facades\Storage;
 
 class GiftCategoriesTableSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class GiftCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        $imagePath = Storage::disk('s3')->url('img/gifts/categories/');
         $data = [
             [
                 'name' => 'Baby',
@@ -19,7 +21,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Gifts for Baby',
                 'title2' => '赤ちゃん',
                 'icon' => 'fas fa-baby',
-                'image' => 'baby.jpg',
+                'image' => $imagePath .'baby.jpg',
             ],
             [
                 'name' => 'Kids',
@@ -27,7 +29,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Gifts for Kids',
                 'title2' => 'お子様',
                 'icon' => 'fas fa-child',
-                'image' => 'kids.jpg',
+                'image' => $imagePath .'kids.jpg',
             ],
             [
                 'name' => 'Sweets',
@@ -35,7 +37,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Sweets Gifts',
                 'title2' => 'お菓子',
                 'icon' => 'fas fa-cookie',
-                'image' => 'sweets.jpg',
+                'image' => $imagePath .'sweets.jpg',
             ],
             [
                 'name' => 'Book',
@@ -43,7 +45,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Book Gifts',
                 'title2' => '書籍',
                 'icon' => 'fas fa-book',
-                'image' => 'book.jpg',
+                'image' => $imagePath .'book.jpg',
             ],
             [
                 'name' => 'Flower',
@@ -51,7 +53,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Flower Gifts',
                 'title2' => '花',
                 'icon' => 'fas fa-leaf',
-                'image' => 'flower.jpg',
+                'image' => $imagePath .'flower.jpg',
             ],
             [
                 'name' => 'Game',
@@ -59,7 +61,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Game Gifts',
                 'title2' => 'ゲーム',
                 'icon' => 'fas fa-gamepad',
-                'image' => 'game.jpg',
+                'image' => $imagePath .'game.jpg',
             ],
             [
                 'name' => 'Mens',
@@ -67,7 +69,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Mens Fashion Gifts',
                 'title2' => 'メンズ',
                 'icon' => 'fas fa-tshirt',
-                'image' => 'mens.jpg',
+                'image' => $imagePath .'mens.jpg',
             ],
             [
                 'name' => 'Ladies',
@@ -75,7 +77,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Ladies Fashion Gifts',
                 'title2' => 'レディース',
                 'icon' => 'fas fa-tshirt',
-                'image' => 'ladies.jpg',
+                'image' => $imagePath .'ladies.jpg',
             ],
             [
                 'name' => 'Interior',
@@ -83,7 +85,7 @@ class GiftCategoriesTableSeeder extends Seeder
                 'title1' => 'Interior Gifts',
                 'title2' => 'インテリア',
                 'icon' => 'fas fa-chair',
-                'image' => 'interior.jpg',
+                'image' => $imagePath .'interior.jpg',
             ],
         ];
 

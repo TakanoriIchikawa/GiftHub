@@ -20,7 +20,7 @@
                 <div class="modal-header">
                     <div class="modal-title d-flex align-items-center pl-sm-3">
                         <div class="c-avatar">
-                            <img :src="'/storage/img/avatars/' + receive_user_image" class="c-avatar-img">
+                            <img :src="receive_user_image" class="c-avatar-img">
                             <span class="c-avatar-status bg-success"></span>
                         </div>
                         <div class="pl-2 text-left">{{ receive_name }}さんへ</div>

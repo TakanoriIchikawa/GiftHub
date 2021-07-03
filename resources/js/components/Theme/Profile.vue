@@ -118,7 +118,7 @@ export default {
                 this.user_birth_day = userInfo.birth_day,
                 this.user_location = userInfo.location,
                 this.user_image = userInfo.image,
-                this.preview = '/storage/img/avatars/' + userInfo.image
+                this.preview = userInfo.image
             }).catch ( error => {
                 if (error.response.status === 401) {
                     this.$router.push({name:'Login'})

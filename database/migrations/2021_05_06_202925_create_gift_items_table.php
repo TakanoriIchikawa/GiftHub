@@ -18,7 +18,7 @@ class CreateGiftItemsTable extends Migration
             $table->integer('gift_category_id');
             $table->string('name', 100);
             $table->integer('point');
-            $table->string('image', 50)->default('noimage.jpg');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
