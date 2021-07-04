@@ -8,6 +8,9 @@ use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Friend\FriendRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 
+use Aws\S3\MultipartUploader;
+use Aws\Exception\MultipartUploadException;
+
 class UserService
 {
     const IMG_AVATARS = 'img/avatars/';
@@ -127,12 +130,16 @@ class UserService
      */
     public function uploadUserImage(object $request): string
     {
+
+
         $imageFile = $request->file('image');
 
-        $imagePath = self::IMG_AVATARS;
-        $imageName = Auth::id() .'.' .$imageFile->getClientOriginalExtension();
+        return Storage::disk('s3')->putFile('img/avatars', $imageFile, 'public');
 
-        Storage::disk('s3')->delete($imagePath .$imageName);
-        return $imageFile->storeAs($imagePath, $imageName, ['disk' => 's3', 'visibility' => 'public']);
+        // $imagePath = self::IMG_AVATARS;
+        // $imageName = Auth::id() .'.' .$imageFile->getClientOriginalExtension();
+
+        // Storage::disk('s3')->delete($imagePath .$imageName);
+        // return $imageFile->storeAs($imagePath, $imageName, ['disk' => 's3', 'visibility' => 'public']);
     }
 }
