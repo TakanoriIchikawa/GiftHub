@@ -95,13 +95,11 @@ class UserService
     {
         $user = $this->userRepository->findUser(Auth::id());
         $user->fill($params);
-        \Log::debug($params);
         DB::beginTransaction();
         try {
             $this->userRepository->update($user);
             DB::commit();
         } catch (\Exception $e) {
-            \Log::debug($e->getMessage());
             DB::rollback();
             return false;
         }
@@ -130,16 +128,12 @@ class UserService
      */
     public function uploadUserImage(object $request): string
     {
-
-
         $imageFile = $request->file('image');
 
-        return Storage::disk('s3')->putFile('img/avatars', $imageFile, 'public');
+        $imagePath = self::IMG_AVATARS;
+        $imageName = Auth::id() .'.' .$imageFile->getClientOriginalExtension();
 
-        // $imagePath = self::IMG_AVATARS;
-        // $imageName = Auth::id() .'.' .$imageFile->getClientOriginalExtension();
-
-        // Storage::disk('s3')->delete($imagePath .$imageName);
-        // return $imageFile->storeAs($imagePath, $imageName, ['disk' => 's3', 'visibility' => 'public']);
+        Storage::disk('s3')->delete($imagePath .$imageName);
+        return Storage::disk('s3')->putFileAs('img/avatars', $imageFile, $imageName, 'public');
     }
 }
