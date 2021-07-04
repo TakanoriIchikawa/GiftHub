@@ -39,6 +39,12 @@ class ChatMessageService
             if (empty($latestSendChatMessage) && empty($latestReceiveChatMessage)) {
                 $friendsWithLatestChatMessage->forget($key);
                 continue;
+            } elseif (empty($latestSendChatMessage)) {
+                $friend = $this->setLatestChatMessage($friend, $latestReceiveChatMessage);
+                continue;
+            } elseif (empty($latestReceiveChatMessage)) {
+                $friend = $this->setLatestChatMessage($friend, $latestSendChatMessage);
+                continue;
             }
 
             if ($latestSendChatMessage['id'] < $latestReceiveChatMessage['id']) {
