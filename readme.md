@@ -27,6 +27,7 @@ http://54.238.172.200/login
     - RDS
         - MySQL
     - S3
+    - Route53
     - VPC
     - SNS
 
