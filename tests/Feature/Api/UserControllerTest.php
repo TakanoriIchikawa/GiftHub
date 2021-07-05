@@ -14,8 +14,9 @@ class UserControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed('UsersTableSeeder');
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
+        $this->createTestUser();
+        $this->createTestUsers();
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
     
     /**

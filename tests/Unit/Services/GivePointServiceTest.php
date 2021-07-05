@@ -25,7 +25,7 @@ class GivePointServiceTest extends TestCase
         $this->createTestGrantPoints($this->user->id);
         $this->createTestGivePoints($this->user->id);
         $this->givePointService = app(GivePointService::class);
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**

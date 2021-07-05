@@ -4,7 +4,6 @@ namespace Tests\Unit\Repositories;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Repositories\GiftCategory\GiftCategoryRepositoryInterface;
-use App\Models\GiftCategory;
 use Tests\TestCase;
 
 class GiftCategoryRepositoryTest extends TestCase
@@ -14,7 +13,7 @@ class GiftCategoryRepositoryTest extends TestCase
     public function setup(): void
     {
         parent::setUp();
-        $this->seed('GiftCategoriesTableSeeder');
+        $this->createTestGiftCategorys();
         $this->giftCategoryRepository = app(GiftCategoryRepositoryInterface::class);
     }
 

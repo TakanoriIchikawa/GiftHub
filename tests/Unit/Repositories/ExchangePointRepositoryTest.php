@@ -18,7 +18,7 @@ class ExchangePointRepositoryTest extends TestCase
         $this->createTestGivePoints($this->user->id);
         $this->createTestExchangePoints($this->user->id);
         $this->exchangePointRepository = app(ExchangePointRepositoryInterface::class);
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**

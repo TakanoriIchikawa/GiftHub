@@ -14,8 +14,11 @@ class GiftItemControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed('UsersTableSeeder');
-        $this->seed('GiftItemsTableSeeder');
+        $this->createTestUser();
+        $this->createTestUsers();
+        $this->createTestGiftCategorys();
+        $this->createTestGiftItems();
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -25,7 +28,6 @@ class GiftItemControllerTest extends TestCase
      */
     public function testGetGiftItems(): void
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('get.gift.items'));
         $response->assertStatus(200);
     }
