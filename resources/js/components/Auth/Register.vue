@@ -5,8 +5,8 @@
 <div class="container fade-in">
 
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card mx-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card mx-sm-4">
             <ValidationObserver ref="observer" v-slot="{ invalid }">
             <form v-on:submit.prevent="register">
                 <div class="card-body p-4">
