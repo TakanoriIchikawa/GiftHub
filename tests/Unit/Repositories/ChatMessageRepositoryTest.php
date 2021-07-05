@@ -12,11 +12,10 @@ class ChatMessageRepositoryTest extends TestCase
 
     public function setUp(): void
     {
-        parent::setUp();
-        $this->seed('UsersTableSeeder');
-        $this->user = $this->getTestUser('chiaki0223@icloud.com');
-        $this->createTestFriends($this->user->id);
-        $this->createTestChatMessages($this->user->id);
+        // $this->user = $this->createTestUser();
+        // $this->createTestUsers();
+        // $this->createTestFriends($this->user->id);
+        // $this->createTestChatMessages($this->user->id);
         $this->chatMessageRepository = app(ChatMessageRepositoryInterface::class);
     }
 
@@ -27,6 +26,11 @@ class ChatMessageRepositoryTest extends TestCase
      */
     public function testGetChatMessages()
     {
+        $this->user = $this->createTestUser();
+        $this->createTestUsers();
+        $this->createTestFriends($this->user->id);
+        $this->createTestChatMessages($this->user->id);
+
         $friend = $this->getTestFriends($this->user->id)->first();
         $userIds = [
             'user_id' => $this->user->id,
@@ -50,6 +54,8 @@ class ChatMessageRepositoryTest extends TestCase
      */
     public function testCreate()
     {
+        $this->user = $this->firstTestUser('chiaki0223@test.com');
+
         $sendUserId = $this->user->id;
         $friend = $this->getTestFriends($this->user->id)->first();
         $receiveUserId = $friend->friend_id;

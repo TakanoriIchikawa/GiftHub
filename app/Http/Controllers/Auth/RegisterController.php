@@ -71,7 +71,10 @@ class RegisterController extends Controller
             $data['email'] = '';
         }
 
-        $image = Storage::disk('s3')->url('img/avatars/noimage.jpg');
+        $image = '';
+        if (!app()->runningUnitTests()) {
+            $image = Storage::disk('s3')->url('img/avatars/noimage.jpg');
+        }
 
         $user = User::create([
             'name' => $data['name'],

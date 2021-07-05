@@ -16,7 +16,7 @@ class DashboardServiceTest extends TestCase
         parent::setUp();
         $this->user = $this->createTestUser();
         $this->dashboardService = app(DashboardService::class);
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**

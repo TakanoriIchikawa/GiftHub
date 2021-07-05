@@ -14,8 +14,10 @@ class FriendControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed('UsersTableSeeder');
+        $this->createTestUser();
+        $this->createTestUsers();
         $this->seed('FriendsTableSeeder');
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -25,7 +27,6 @@ class FriendControllerTest extends TestCase
      */
     public function testSearchFriends()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('search.friends'));
         $response->assertStatus(200);
     }
@@ -37,7 +38,6 @@ class FriendControllerTest extends TestCase
      */
     public function testAddFriend()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'friend_user_id' => 2,
         ];

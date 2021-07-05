@@ -14,11 +14,13 @@ class FriendRepositoryTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed('UsersTableSeeder');
-        $this->user = $this->getTestUser('chiaki0223@icloud.com');
+        parent::setUp();
+        $this->user = $this->createTestUser();
+        $this->createTestUsers();
         $this->createTestFriends($this->user->id);
         $this->createTestChatMessages($this->user->id);
         $this->friendRepository = app(FriendRepositoryInterface::class);
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -28,7 +30,6 @@ class FriendRepositoryTest extends TestCase
      */
     public function testSearchFriends()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         // 検索ワード：なし
         $friendName = '';
         $friends = $this->friendRepository->searchFriends($friendName);
@@ -38,53 +39,24 @@ class FriendRepositoryTest extends TestCase
 
         $result = false;
         foreach ($friends as $friend) {
-            if ($friend->user->name === 'ジョナサン') {
+            if ($friend->user->name === 'テストユーザー1') {
                 $result = true;
                 break;
             }
         }
         $this->assertTrue($result);
 
-        $result = false;
-        foreach ($friends as $friend) {
-            if ($friend->user->name === 'マイケル') {
-                $result = true;
-                break;
-            }
-        }
-        $this->assertTrue($result);
-
-        // 検索ワード：ジョナサン
-        $friendName = 'ジョナサン';
+        // 検索ワード：テスト
+        $friendName = 'テスト';
         $friends = $this->friendRepository->searchFriends($friendName);
         $friendName = $friends->first()->user->name; 
 
         $result = false;
-        if ($friendName === 'ジョナサン') {
-            $result = true;
-        }
-        $this->assertTrue($result);
-
-        $result = false;
-        if ($friendName === 'マイケル') {
-            $result = true;
-        }
-        $this->assertFalse($result);
-
-        // 検索ワード：マイケル
-        $friendName = 'マイケル';
-        $friends = $this->friendRepository->searchFriends($friendName);
-        $friendName = $friends->first()->user->name;
-
-        $result = false;
-        if ($friendName === 'ジョナサン') {
-            $result = true;
-        }
-        $this->assertFalse($result);
-
-        $result = false;
-        if ($friendName === 'マイケル') {
-            $result = true;
+        foreach ($friends as $friend) {
+            if ($friend->user->name === 'テストユーザー1') {
+                $result = true;
+                break;
+            }
         }
         $this->assertTrue($result);
     }
@@ -96,7 +68,6 @@ class FriendRepositoryTest extends TestCase
      */
     public function testExistsFriend()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $userId = $this->user->id;
 
         $friends = $this->getTestFriends($userId);
@@ -116,7 +87,6 @@ class FriendRepositoryTest extends TestCase
      */
     public function testAddFriend()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $userId = $this->user->id;
         $friendUserId = 1000;
         $params = [
@@ -135,7 +105,6 @@ class FriendRepositoryTest extends TestCase
      */
     public function testGetFriendsWithLatestChatMessage()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $friendsWithLatestChatMessage = $this->friendRepository->getFriendsWithLatestChatMessage();
         foreach ($friendsWithLatestChatMessage as $friend) {
             $latestSendChatMessage = $friend->latestSendChatMessage['message'];

@@ -4,7 +4,6 @@ namespace Tests\Unit\Services;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Services\GiftItemService;
-use App\Models\GiftItem;
 use Tests\TestCase;
 
 class GiftItemServiceTest extends TestCase
@@ -14,7 +13,8 @@ class GiftItemServiceTest extends TestCase
     public function setup(): void
     {
         parent::setUp();
-        $this->seed('GiftItemsTableSeeder');
+        $this->createTestGiftCategorys();
+        $this->createTestGiftItems();
         $this->giftItemService = app(GiftItemService::class);
     }
 
@@ -25,14 +25,13 @@ class GiftItemServiceTest extends TestCase
      */
     public function testGetGiftItems(): void
     {
-
-        // 景品カテゴリID：1
-        $giftItems = $this->giftItemService->getGiftItems(1);
-        $result = $giftItems->where('name', 'はらぺこあおむし1')->isNotEmpty();
+        $giftItem = $this->firstTestGiftItem('赤ちゃん1');
+        $giftItems = $this->giftItemService->getGiftItems($giftItem->gift_category_id);
+        $result = $giftItems->where('name', '赤ちゃん1')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftItems->where('name', 'はらぺこあおむし2')->isNotEmpty();
+        $result = $giftItems->where('name', '赤ちゃん2')->isNotEmpty();
         $this->assertTrue($result);
-        $result = $giftItems->where('name', 'テスト1')->isEmpty();
+        $result = $giftItems->where('name', 'お菓子1')->isEmpty();
         $this->assertTrue($result);
     }
 }

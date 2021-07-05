@@ -14,9 +14,10 @@ class UserRepositoryTest extends TestCase
     public function setup(): void
     {
         parent::setUp();
-        $this->seed('UsersTableSeeder');
+        $this->createTestUser();
+        $this->createTestUsers();
         $this->userRepository = app(UserRepositoryInterface::class);
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -31,31 +32,21 @@ class UserRepositoryTest extends TestCase
         $users = $this->userRepository->searchUsers($userName);
         $result = $users->count();
         $this->assertLessThanOrEqual(100, $result);
-        $result = $users->where('name', '市川千耀')->isNotEmpty();
-        $this->assertFalse($result);
-        $result = $users->where('name', 'ジョナサン')->isNotEmpty();
+        $result = $users->where('name', '市川千耀')->isEmpty();
         $this->assertTrue($result);
-        $result = $users->where('name', 'マイケル')->isNotEmpty();
+        $result = $users->where('name', 'テストユーザー1')->isNotEmpty();
+        $this->assertTrue($result);
+        $result = $users->where('name', 'テストユーザー2')->isNotEmpty();
         $this->assertTrue($result);
         
-        // 検索ワード：ジョナ
-        $userName = 'ジョナ';
+        // 検索ワード：テスト
+        $userName = 'テスト';
         $users = $this->userRepository->searchUsers($userName);
-        $result = $users->where('name', '市川千耀')->isNotEmpty();
-        $this->assertFalse($result);
-        $result = $users->where('name', 'ジョナサン')->isNotEmpty();
+        $result = $users->where('name', '市川千耀')->isEmpty();
         $this->assertTrue($result);
-        $result = $users->where('name', 'マイケル')->isNotEmpty();
-        $this->assertFalse($result);
-
-        // 検索ワード：マイケル
-        $userName = 'マイケル';
-        $users = $this->userRepository->searchUsers($userName);
-        $result = $users->where('name', '市川千耀')->isNotEmpty();
-        $this->assertFalse($result);
-        $result = $users->where('name', 'ジョナサン')->isNotEmpty();
-        $this->assertFalse($result);
-        $result = $users->where('name', 'マイケル')->isNotEmpty();
+        $result = $users->where('name', 'テストユーザー1')->isNotEmpty();
+        $this->assertTrue($result);
+        $result = $users->where('name', 'テストユーザー2')->isNotEmpty();
         $this->assertTrue($result);
     }
 
@@ -68,7 +59,7 @@ class UserRepositoryTest extends TestCase
     {
         $result = $this->userRepository->findUser(Auth::id());
         $this->assertEquals($result->name, '市川千耀');
-        $this->assertEquals($result->email, 'chiaki0223@icloud.com');
+        $this->assertEquals($result->email, 'chiaki0223@test.com');
     }
 
     /**

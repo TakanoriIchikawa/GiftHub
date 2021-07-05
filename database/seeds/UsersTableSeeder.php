@@ -15,33 +15,25 @@ class UsersTableSeeder extends Seeder
     {
         $imagePath = Storage::disk('s3')->url('img/avatars/');
         $data= [
-            [
-                'name' => '市川千耀',
-                'email' => 'chiaki0223@icloud.com',
-                'password' => bcrypt('chiaki0223'),
-            ],
-            [
-                'name' => 'ジョナサン',
-                'email' => 'jonathan0223@icloud.com',
-                'password' => bcrypt('jonathan0223'),
-            ],
-            [
-                'name' => 'マイケル',
-                'email' => 'michael0223@icloud.com',
-                'password' => bcrypt('michael0223'),
-            ],
+            'name' => '市川千耀',
+            'email' => 'chiaki0223@test.com',
+            'password' => bcrypt('chiaki0223'),
+            'image' => $imagePath .'chiaki.jpg',
+            'birth_year' => 2020,
+            'birth_month' => 2,
+            'birth_day' => 23,
+            'location' => '静岡県',
         ];
 
-        foreach ($data as $user) {
-            User::create($user);
-        }
+        User::create($data);
+
         factory(User::class, 100)->create();
 
         $images = [
             'sample1.jpg', 'sample2.jpg', 'sample3.jpg', 'sample4.jpg', 'sample5.jpg', 'sample6.jpg', 'sample7.jpg', 'sample8.jpg'
         ];
 
-        $users = User::get();
+        $users = User::get()->where('email', '!=', 'chiaki0223@test.com');
         foreach ($users as $user) {
             $key = array_rand($images);
             $image = $imagePath .$images[$key];

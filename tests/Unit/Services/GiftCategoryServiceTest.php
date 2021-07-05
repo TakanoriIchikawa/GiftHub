@@ -4,7 +4,6 @@ namespace Tests\Unit\Services;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Services\GiftCategoryService;
-use App\Models\GiftCategory;
 use Tests\TestCase;
 
 class GiftCategoryServiceTest extends TestCase
@@ -14,7 +13,7 @@ class GiftCategoryServiceTest extends TestCase
         public function setup(): void
     {
         parent::setUp();
-        $this->seed('GiftCategoriesTableSeeder');
+        $this->createTestGiftCategorys();
         $this->giftCategoryService = app(GiftCategoryService::class);
     }
 

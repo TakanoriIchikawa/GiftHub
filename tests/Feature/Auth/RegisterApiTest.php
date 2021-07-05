@@ -20,17 +20,15 @@ class RegisterApiTest extends TestCase
     {
         $data = [
             'name' => '市川千耀',
-            'email' => 'chiaki0223@icloud.com',
+            'email' => 'chiaki0223@test.com',
             'password' => 'chiaki0223',
             'password_confirmation' => 'chiaki0223',
         ];
 
         $response = $this->json('POST', route('register'), $data);
-
-        $user = User::first();
+        $user = User::where('name', $data['name'])->first();
         $this->assertEquals($data['name'], $user->name);
 
-        $response->assertStatus(201)
-                ->assertJson(['name' => $user->name]);
+        $response->assertStatus(201)->assertJson(['name' => $user->name]);
     }
 }

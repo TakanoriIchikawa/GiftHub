@@ -16,6 +16,7 @@ class GrantPointControllerTest extends TestCase
         parent::setUp();
         $this->user = $this->createTestUser();
         $this->createTestGrantPoints($this->user->id);
+        Auth::attempt(['email' => 'chiaki0223@test.com', 'password' => 'chiaki0223']);
     }
 
     /**
@@ -25,7 +26,6 @@ class GrantPointControllerTest extends TestCase
      */
     public function testGetAvailablePoint(): void
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $response = $this->json('GET', route('get.available.point'));
         $response->assertStatus(200);
     }
@@ -37,7 +37,6 @@ class GrantPointControllerTest extends TestCase
      */
     public function testChargeGrantPoint()
     {
-        Auth::attempt(['email' => 'chiaki0223@icloud.com', 'password' => 'chiaki0223']);
         $params = [
             'grant_point' => 1000,
         ];
