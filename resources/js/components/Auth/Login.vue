@@ -5,7 +5,7 @@
 <div class="container fade-in">
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-10 col-lg-8">
         <div class="card-group">
             <div class="card p-4">
                 <ValidationObserver ref="observer" v-slot="{ invalid }">
@@ -57,7 +57,7 @@
                 </form>
                 </ValidationObserver>
             </div>
-            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+            <div class="card text-white bg-primary py-5 d-none d-md-block" style="width:44%">
                 <div class="card-body text-center">
                     <div>
                         <h2>Sign up</h2>
@@ -66,6 +66,19 @@
                             <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
                         </router-link>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card text-white bg-primary py-5 d-md-none">
+            <div class="card-body text-center">
+                <div>
+                    <h2>Sign up</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <router-link to="/register">
+                        <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
+                    </router-link>
                 </div>
             </div>
         </div>
