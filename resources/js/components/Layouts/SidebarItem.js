@@ -4,7 +4,7 @@ export default [
         _children: [
             {
                 _name: 'CSidebarNavItem',
-                name: 'Dashboard',
+                name: 'ダッシュボード',
                 to: '/dashboard',
                 icon: 'cil-speedometer',
                 badge: {
@@ -18,32 +18,32 @@ export default [
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Friends',
-                to: '/friends/list',
+                name: '友達',
+                to: '/friend/list',
                 icon: 'cil-user',
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Chat',
+                name: 'チャット',
                 to: '/chat',
                 icon: 'cil-chat-bubble'
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Point',
+                name: 'ポイント購入',
                 to: '/points/grant',
                 icon: 'cil-smile-plus'
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'History',
+                name: '記録',
                 to: '/history',
                 icon: 'cil-history'
             },
             {
                 _name: 'CSidebarNavItem',
-                name: 'Gifts',
-                to: '/gifts/category',
+                name: '景品',
+                to: '/gift/category',
                 icon: 'cil-gift',
                 badge: {
                     color: 'primary',

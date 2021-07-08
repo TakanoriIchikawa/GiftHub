@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-primary text-center font-weight-bold m-0">
-                        <span>Available Point</span>
+                        <span>友達に贈れるポイント</span>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-info text-center font-weight-bold m-0">
-                        <span>Gave Point</span>
+                        <span>今まで贈ったポイント</span>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -37,7 +37,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-success text-center font-weight-bold m-0">
-                        <span>Received Point</span>
+                        <span>今まで貰ったポイント</span>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -53,7 +53,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-danger text-center font-weight-bold m-0">
-                        <span>Exchangeable Point</span>
+                        <span>景品と交換可能なポイント</span>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -70,14 +70,14 @@
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="card">
                 <header class="card-header">
-                    A friend who recently gave points
+                    最近ポイントを贈った友達
                 </header>
                 <div class="card-body">
                     <div class="position-relative table-responsive">
                         <table class="table mb-0">
                             <tbody class="position-relative">
                                 <router-link  v-for="friend in list.give_point_friends" :key="friend.id"
-                                            :to="{ name:'ChatRoom', params:{ receive_user_id: friend.receive_user_id }}"
+                                            :to="{ path:'/chat/room/' + friend.receive_user_id }"
                                             class="text-decoration-none">
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
@@ -107,14 +107,14 @@
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="card">
                 <header class="card-header">
-                    A friend who recently received points
+                    最近ポイントを貰った友達
                 </header>
                 <div class="card-body">
                     <div class="position-relative table-responsive">
                         <table class="table mb-0">
                             <tbody class="position-relative">
                                 <router-link v-for="friend in list.receive_point_friends" :key="friend.id"
-                                            :to="{ name:'ChatRoom', params:{ receive_user_id: friend.give_user_id }}"
+                                            :to="{ path:'/chat/room/' + friend.give_user_id }"
                                             class="text-decoration-none">
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">
@@ -144,14 +144,14 @@
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="card">
                 <header class="card-header">
-                    Recently exchanged giveaway
+                    最近交換した景品
                 </header>
                 <div class="card-body">
                     <div class="position-relative table-responsive">
                         <table class="table mb-0">
                             <tbody class="position-relative">
                                 <router-link v-for="gift in list.exchange_gift_items" :key="gift.id"
-                                            :to="{ name:'Items', params:{ gift_category_id: gift.gift_item.gift_category_id }}"
+                                            :to="{ path:'/gift/item/' + gift.gift_item.gift_category_id }"
                                             class="text-decoration-none">
                                     <tr class="d-flex">
                                         <td class="w-100 d-flex align-items-center">

@@ -15,18 +15,13 @@
     </CHeaderBrand>
     <CHeaderNav class="d-md-down-none mr-auto">
       <CHeaderNavItem class="px-3">
-        <CHeaderNavLink to="/dashboard">
-          Dashboard
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="px-3">
         <CHeaderNavLink to="/profile" exact>
-          Profile
+          プロフィール
         </CHeaderNavLink>
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">
         <CHeaderNavLink>
-          Settings
+          セッティング
         </CHeaderNavLink>
       </CHeaderNavItem>
     </CHeaderNav>

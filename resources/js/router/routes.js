@@ -32,12 +32,12 @@ const routes = [
     {
         path: '/',
         redirect: '/dashboard',
-        name: 'Home',
+        name: 'ホーム',
         component: App,
         children: [
             {
                 path: 'dashboard',
-                name: 'Dashboard',
+                name: 'ダッシュボード',
                 component: Dashboard,
                 meta: {
                     requiresAuth: true,
@@ -45,7 +45,7 @@ const routes = [
             },
             {
                 path: 'profile',
-                name: 'Profile',
+                name: 'プロフィール',
                 component: Profile,
                 meta: {
                     requiresAuth: true,
@@ -55,7 +55,7 @@ const routes = [
                 path: 'points',
                 redirect: '/points/grant',
                 meta: {
-                    label: 'Points'
+                    label: 'ポイント'
                 },
                 component: {
                     render(c) {
@@ -65,7 +65,7 @@ const routes = [
                 children: [
                     {
                         path: 'give',
-                        name: 'Give',
+                        name: 'ポイントを贈る',
                         component: GivePoint,
                         meta: {
                             requiresAuth: true,
@@ -73,7 +73,7 @@ const routes = [
                     },
                     {
                         path: 'grant',
-                        name: 'Grant',
+                        name: 'ポイント購入',
                         component: GrantPoint,
                         meta: {
                             requiresAuth: true,
@@ -82,10 +82,10 @@ const routes = [
                 ],
             },
             {
-                path: 'friends',
-                redirect: '/friends/list',
+                path: 'friend',
+                redirect: '/friend/list',
                 meta: {
-                    label: 'Friends'
+                    label: '友達'
                 },
                 component: {
                     render(c) {
@@ -95,7 +95,7 @@ const routes = [
                 children: [
                     {
                         path: 'list',
-                        name: 'FriendList',
+                        name: '友達の一覧',
                         component: FriendList,
                         meta: {
                             requiresAuth: true,
@@ -103,7 +103,7 @@ const routes = [
                     },
                     {
                         path: 'add',
-                        name: 'FriendAdd',
+                        name: '友達を追加',
                         component: FriendAdd,
                         meta: {
                             requiresAuth: true,
@@ -115,7 +115,7 @@ const routes = [
                 path: 'chat',
                 redirect: '/chat/list',
                 meta: {
-                    label: 'Chat'
+                    label: 'チャット'
                 },
                 component: {
                     render(c) {
@@ -125,7 +125,7 @@ const routes = [
                 children: [
                     {
                         path: 'list',
-                        name: 'ChatList',
+                        name: 'チャットの一覧',
                         component: ChatList,
                         meta: {
                             requiresAuth: true,
@@ -133,7 +133,7 @@ const routes = [
                     },
                     {
                         path: 'room/:receive_user_id',
-                        name: 'ChatRoom',
+                        name: 'チャットルーム',
                         component: ChatRoom,
                         meta: {
                             requiresAuth: true,
@@ -142,10 +142,10 @@ const routes = [
                 ],
             },
             {
-                path: 'gifts',
-                redirect: '/gifts/category',
+                path: 'gift',
+                redirect: '/gift/category',
                 meta: {
-                    label: 'Gifts'
+                    label: '景品'
                 },
                 component: {
                     render(c) {
@@ -155,15 +155,15 @@ const routes = [
                 children: [
                     {
                         path: 'category',
-                        name: 'Category',
+                        name: 'カテゴリ',
                         component: GiftCategories,
                         meta: {
                             requiresAuth: true,
                         },
                     },
                     {
-                        path: 'items/:gift_category_id',
-                        name: 'Items',
+                        path: 'item/:gift_category_id',
+                        name: 'アイテム',
                         component: GiftItems,
                         meta: {
                             requiresAuth: true,
@@ -173,7 +173,7 @@ const routes = [
             },
             {
                 path: 'history',
-                name: 'History',
+                name: '記録',
                 component: History,
                 meta: {
                     requiresAuth: true,

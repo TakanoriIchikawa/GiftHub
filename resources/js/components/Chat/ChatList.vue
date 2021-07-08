@@ -7,13 +7,12 @@
                 <svg class="c-icon">
                     <use xlink:href="/assets/coreui.icon.svg#cil-grain"></use>
                 </svg>
-                <strong class="px-2"> Chat List </strong>
-                <small>Enjoy chatting with your friends</small>
+                <strong class="px-2"> チャットの一覧 </strong>
             </header>
             <div class="card-body">
                 <ul role="list-items" class="list-group">
                     <router-link v-for="chat in chats" :key="chat.user.id"
-                                :to="{ name:'ChatRoom', params:{ receive_user_id: chat.user.id,}}"
+                                :to="{ path:'/chat/room/' + chat.user.id }"
                                 class="text-decoration-none">
                         <li class="list-group-item d-flex justify-content-between">
                             <div class="d-flex align-items-center">
