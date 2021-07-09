@@ -69,3 +69,5 @@ Route::post('/exchange/point', 'Api\ExchangePointController@exchangePoint')->nam
 
 // ダッシュボード
 Route::get('/get/dashboard/data', 'Api\DashboardController@getDashboardData')->name('get.dashboard.data');
+
+Route::post('/send/mail', 'Api\SendMailController@sendMail')->name('send.mail');

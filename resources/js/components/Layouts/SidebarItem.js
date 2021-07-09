@@ -89,10 +89,9 @@ export default [
             {
                 _name: 'CSidebarNavItem',
                 name: 'Contact Mail',
-                href: 'https://coreui.io/vue/demo/free/3.1.1/#/dashboard',
+                to: '/contact',
                 icon: { name: 'cil-envelope-open', class: 'text-white' },
                 _class: 'bg-success text-white',
-                target: '_blank'
             },
             {
                 _name: 'CSidebarNavItem',

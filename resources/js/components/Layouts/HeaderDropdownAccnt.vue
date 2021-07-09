@@ -1,5 +1,5 @@
 <template>
-  <label class="m-0" @click="getDashboardData">
+  <label class="m-0">
   <CDropdown
     inNav
     class="c-header-nav-items"
@@ -20,11 +20,11 @@
     <CDropdownHeader tag="div" class="text-center" color="light">
       <strong>コミュニティ</strong>
     </CDropdownHeader>
-    <CDropdownItem href="/friends/list">
+    <CDropdownItem to="/friend/list">
       <CIcon name="cil-group" /> 友達
       <CBadge color="primary" class="mfs-auto">20</CBadge>
     </CDropdownItem>
-    <CDropdownItem href="/chat/list">
+    <CDropdownItem to="/chat/list">
       <CIcon name="cil-chat-bubble" /> チャット
       <CBadge color="warning" class="mfs-auto">4</CBadge>
     </CDropdownItem>
@@ -32,11 +32,11 @@
     <CDropdownHeader tag="div" class="text-center" color="light">
       <strong>アカウント</strong>
     </CDropdownHeader>
-    <CDropdownItem href="/profile">
+    <CDropdownItem to="/profile">
       <CIcon name="cil-user" /> プロフィール
     </CDropdownItem>
     <CDropdownItem>
-      <CIcon name="cil-settings" /> セッティング
+      <CIcon name="cil-settings" /> 設定
     </CDropdownItem>
     <CDropdownDivider/>
     <CDropdownItem @click="logout()">
@@ -69,8 +69,7 @@ export default {
         },
     },
     mounted() {
-        this.findUser(),
-        this.getDashboardData()
+        this.findUser()
     },
   data () {
       return {

@@ -187,16 +187,16 @@ export default {
 <style scoped>
 
 img {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 50%;
 }
 
 .user-image {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     cursor: pointer;
     transition:1s all;

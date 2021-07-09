@@ -21,7 +21,7 @@
       </CHeaderNavItem>
       <CHeaderNavItem class="px-3">
         <CHeaderNavLink>
-          セッティング
+          設定
         </CHeaderNavLink>
       </CHeaderNavItem>
     </CHeaderNav>

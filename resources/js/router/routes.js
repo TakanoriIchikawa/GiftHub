@@ -8,6 +8,7 @@ import App from '../components/Layouts/App.vue'
 // 子コンポーネント
 import Dashboard from '../components/Theme/Dashboard.vue';
 import Profile from '../components/Theme/Profile.vue';
+import Contact from '../components/Theme/Contact.vue';
 import GivePoint from '../components/Point/GivePoint.vue';
 import GrantPoint from '../components/Point/GrantPoint.vue';
 import FriendList from '../components/Friend/FriendList.vue';
@@ -175,6 +176,14 @@ const routes = [
                 path: 'history',
                 name: '記録',
                 component: History,
+                meta: {
+                    requiresAuth: true,
+                },
+            },
+            {
+                path: 'contact',
+                name: 'お問い合わせ',
+                component: Contact,
                 meta: {
                     requiresAuth: true,
                 },
