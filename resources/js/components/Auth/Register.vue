@@ -10,13 +10,13 @@
             <ValidationObserver ref="observer" v-slot="{ invalid }">
             <form v-on:submit.prevent="register">
                 <div class="card-body p-4">
-                    <h1>Register</h1>
+                    <h1>会員登録</h1>
                     <div class="row">
                         <div class="col-6">
                             <p class="text-muted">Create your account</p>
                         </div>
                         <div class="col-6 text-center">
-                            <router-link to="/login" class="h5 font-weight-bold">Sign In</router-link>
+                            <router-link to="/login" class="h5 font-weight-bold">サインイン</router-link>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                         <div class="text-danger p-1 mb-2">{{ errors[0] }}</div>
                     </ValidationProvider>
                     
-                    <button class="btn btn-block btn-success" type="submit" :disabled="invalid">Create Account</button>
+                    <button class="btn btn-block btn-success" type="submit" :disabled="invalid">登録</button>
                     <div v-if="register_failed" class="text-danger font-weight-bold p-1">
                         会員登録に失敗しました。
                     </div>
@@ -124,10 +124,10 @@ export default {
     data() {
         return {
             user: {
-                name: "",
-                email: "",
-                password: "",
-                password_confirmation: "",
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: '',
             },
             register_failed: false
         }

@@ -11,15 +11,15 @@
             <form v-on:submit.prevent="updateProfile">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <div class="mt-3 mx-3">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-center">
                                 <label for="user-image" class="user-image">
                                     <img v-show="preview" :src="preview" class="d-block img-fluid">
                                     <input v-on:change="changeUserImage" type="file" id="user-image">
                                 </label>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6">
+                        <div class="col-12 col-md-6">
 
                             <ValidationProvider name="名前" rules="required|max:100" v-slot="{ errors }">
                                 <div class="form-group mb-1">
@@ -187,16 +187,16 @@ export default {
 <style scoped>
 
 img {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 50%;
 }
 
 .user-image {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     cursor: pointer;
     transition:1s all;

@@ -1,5 +1,5 @@
 <template>
-  <label class="m-0" @click="getDashboardData">
+  <label class="m-0">
   <CDropdown
     inNav
     class="c-header-nav-items"
@@ -18,48 +18,29 @@
       </CHeaderNavLink>
     </template>
     <CDropdownHeader tag="div" class="text-center" color="light">
-      <strong>Points</strong>
+      <strong>コミュニティ</strong>
     </CDropdownHeader>
-    <CDropdownItem>
-      <CIcon name="cil-star"/> Available
-      <CBadge color="primary" class="mfs-auto">{{ points.available_point.toLocaleString() }}</CBadge>
-    </CDropdownItem>
-    <CDropdownItem>
-      <CIcon name="cil-smile" /> Gave
-      <CBadge color="info" class="mfs-auto">{{ points.gave_point.toLocaleString() }}</CBadge>
-    </CDropdownItem>
-    <CDropdownItem>
-      <CIcon name="cil-heart" /> Received
-      <CBadge color="success" class="mfs-auto">{{ points.received_point.toLocaleString() }}</CBadge>
-    </CDropdownItem>
-    <CDropdownItem>
-      <CIcon name="cil-gift" /> Exchange
-      <CBadge color="danger" class="mfs-auto">{{ points.exchangeable_point.toLocaleString() }}</CBadge>
-    </CDropdownItem>
-    <CDropdownHeader tag="div" class="text-center" color="light">
-      <strong>Settings</strong>
-    </CDropdownHeader>
-    <CDropdownItem href="/friends/list">
-      <CIcon name="cil-group" /> Friends
+    <CDropdownItem to="/friend/list">
+      <CIcon name="cil-group" /> 友達
       <CBadge color="primary" class="mfs-auto">20</CBadge>
     </CDropdownItem>
-    <CDropdownItem href="/chat/list">
-      <CIcon name="cil-chat-bubble" /> Chat
+    <CDropdownItem to="/chat/list">
+      <CIcon name="cil-chat-bubble" /> チャット
       <CBadge color="warning" class="mfs-auto">4</CBadge>
     </CDropdownItem>
 
     <CDropdownHeader tag="div" class="text-center" color="light">
-      <strong>Settings</strong>
+      <strong>アカウント</strong>
     </CDropdownHeader>
-    <CDropdownItem href="/profile">
-      <CIcon name="cil-user" /> Profile
+    <CDropdownItem to="/profile">
+      <CIcon name="cil-user" /> プロフィール
     </CDropdownItem>
     <CDropdownItem>
-      <CIcon name="cil-settings" /> Settings
+      <CIcon name="cil-settings" /> 設定
     </CDropdownItem>
     <CDropdownDivider/>
     <CDropdownItem @click="logout()">
-      <CIcon name="cil-lock-locked" /> Logout
+      <CIcon name="cil-lock-locked" /> ログアウト
     </CDropdownItem>
   </CDropdown>
   </label>
@@ -82,32 +63,16 @@ export default {
                 }
             })
         },
-        getDashboardData: async function() {
-            const url = '/api/get/dashboard/data'
-            await axios.get(url)
-            .then ( response => {
-                this.points = response.data.points
-                this.list = response.data.list
-            }).catch ( error => {
-                if (error.response.status === 401) {
-                    this.$router.push({name:'Login'})
-                } else {
-                    console.log(error)
-                }
-            })
-        },
         logout: async function() {
             await this.$store.dispatch('auth/logout')
             this.$router.push({name:'Login'})
         },
     },
     mounted() {
-        this.findUser(),
-        this.getDashboardData()
+        this.findUser()
     },
   data () {
       return {
-          points: {},
           user_image: '',
       }
   }

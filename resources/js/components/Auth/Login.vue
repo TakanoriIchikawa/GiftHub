@@ -11,7 +11,7 @@
                 <ValidationObserver ref="observer" v-slot="{ invalid }">
                 <form v-on:submit.prevent="login">
                     <div class="card-body">
-                        <h1>Login</h1>
+                        <h1>ログイン</h1>
                         <p class="text-muted">Sign In to your account</p>
 
                         <ValidationProvider name="メールアドレス" rules="required" v-slot="{ errors }">
@@ -44,7 +44,7 @@
                         
                         <div class="row">
                             <div class="col-6">
-                                <button class="btn btn-primary px-4" type="submit" :disabled="invalid">Login</button>
+                                <button class="btn btn-primary px-4" type="submit" :disabled="invalid">ログイン</button>
                             </div>
                             <div class="col-6 text-right">
                                 <button class="btn btn-link px-0" type="button">Forgot password?</button>
@@ -60,10 +60,10 @@
             <div class="card text-white bg-primary py-5 d-none d-md-block" style="width:44%">
                 <div class="card-body text-center">
                     <div>
-                        <h2>Sign up</h2>
+                        <h2>サインアップ</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         <router-link to="/register">
-                            <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
+                            <button class="btn btn-lg btn-outline-light mt-3" type="button">会員登録</button>
                         </router-link>
                     </div>
                 </div>
@@ -74,10 +74,10 @@
         <div class="card text-white bg-primary py-5 d-md-none">
             <div class="card-body text-center">
                 <div>
-                    <h2>Sign up</h2>
+                    <h2>サインアップ</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <router-link to="/register">
-                        <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
+                        <button class="btn btn-lg btn-outline-light mt-3" type="button">会員登録</button>
                     </router-link>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <template>
 
-<div class="">ポイント交換とかの記録</div>
+<div class="">ポイント交換とかの記録を作る予定</div>
 
 </template>

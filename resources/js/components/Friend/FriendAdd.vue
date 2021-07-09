@@ -12,7 +12,7 @@
                                 </svg>
                             </span>
                         </div>
-                        <input v-model="userName" class="form-control" type="text" placeholder="Search User">
+                        <input v-model="userName" class="form-control" type="text" placeholder="ユーザー検索">
                     </div>
                 </div>
             </div>

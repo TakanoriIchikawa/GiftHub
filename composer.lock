@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0d397ce2a07639dc8e9d8fb7db5fb7c",
+    "content-hash": "fab1f932c21665ab0421204099fed5c3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.185.5",
+            "version": "3.185.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9b7849c4c9f2aaa9c5cab8323b450dd8b2c31d0f"
+                "reference": "d30661623a1835ba4bb406675f865c4b40b4b425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9b7849c4c9f2aaa9c5cab8323b450dd8b2c31d0f",
-                "reference": "9b7849c4c9f2aaa9c5cab8323b450dd8b2c31d0f",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d30661623a1835ba4bb406675f865c4b40b4b425",
+                "reference": "d30661623a1835ba4bb406675f865c4b40b4b425",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.8"
             },
-            "time": "2021-07-01T18:15:11+00:00"
+            "time": "2021-07-07T18:14:28+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

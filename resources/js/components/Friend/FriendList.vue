@@ -12,7 +12,7 @@
                                 </svg>
                             </span>
                         </div>
-                        <input v-model="friendName" class="form-control" type="text" placeholder="Search Friend">
+                        <input v-model="friendName" class="form-control" type="text" placeholder="友達検索">
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                                             <use xlink:href="/assets/coreui.icon.svg#cil-smile"></use>
                                         </svg>
                                     </button>
-                                    <router-link :to="{ name:'ChatRoom', params: { receive_user_id: friend.user.id}}">
+                                    <router-link :to="{ path:'/chat/room/' + friend.user.id }">
                                     <button type="button" class="btn btn-sm btn-danger ml-2">
                                         <svg class="c-icon d-flex align-items-center">
                                             <use xlink:href="/assets/coreui.icon.svg#cil-chat-bubble"></use>
@@ -65,7 +65,7 @@
         </div>
     </div>
     <!-- 友達追加 -->
-    <router-link :to="{ name:'FriendAdd' }">
+    <router-link :to="{ path:'/friend/add' }">
         <button class="btn btn-primary btn-add-friend">
             <svg class="icon-add-friend" width="200px" height="200px">
                 <use xlink:href="/assets/coreui.icon.svg#cil-user-follow"></use>

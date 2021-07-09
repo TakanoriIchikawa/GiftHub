@@ -29,7 +29,7 @@ https://production.gifthub-chiaki.com/
     - S3
     - Route53
     - VPC
-    - SNS
+    - SES
 
 ## 機能
 - 認証系
