@@ -1,7 +1,7 @@
 ## Gift Hub
 ポイントを贈ることで感謝の気持ちを伝えるWebアプリケーションです。  
 貰ったポイントは好きな景品と交換できます。  
-https://production.gifthub-chiaki.com/
+https://production.gifthub-chiaki.com/  
 ※SPA構築のため、初期ローディングに時間を要します。
 | メールアドレス | パスワード |
 | ---- | ---- |
