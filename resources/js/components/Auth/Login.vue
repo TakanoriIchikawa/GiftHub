@@ -14,7 +14,7 @@
                         <h1>ログインわわわわわあ</h1>
                         <p class="text-muted">Sign In to your account</p>
 
-                        <ValidationProvider name="メールアドレス" rules="required" v-slot="{ errors }">
+                        <ValidationProvider name="メールアドレス許ええええ" rules="required" v-slot="{ errors }">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
