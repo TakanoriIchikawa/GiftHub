@@ -20,7 +20,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "f9:3a:47:b0:59:81:b2:66:ec:a9:49:36:a0:be:bb:53"
+            - "${FINGERPRINT_KEY}"
       - run:
           name: Exec deploy command
           command: |
