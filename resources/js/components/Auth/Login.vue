@@ -9,12 +9,12 @@
         <div class="card-group">
             <div class="card p-4">
                 <ValidationObserver ref="observer" v-slot="{ invalid }">
-                <form v-on:submit.prevent="login">
+                <form v-on:submit.prevent="loginここここここ">
                     <div class="card-body">
                         <h1>ログインわわわわわあ</h1>
                         <p class="text-muted">Sign In to your account</p>
 
-                        <ValidationProvider name="メールアドレス許ええええ" rules="required" v-slot="{ errors }">
+                        <ValidationProvider name="メールアドレス" rules="required" v-slot="{ errors }">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
