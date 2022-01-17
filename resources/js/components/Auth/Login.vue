@@ -11,8 +11,8 @@
                 <ValidationObserver ref="observer" v-slot="{ invalid }">
                 <form v-on:submit.prevent="login">
                     <div class="card-body">
-                        <h1>ログインこここここ</h1>
-                        <p class="text-muted">Sign In to your accountあああ</p>
+                        <h1>ログイン化かかか</h1>
+                        <p class="text-muted">Sign In to your account</p>
 
                         <ValidationProvider name="メールアドレス" rules="required" v-slot="{ errors }">
                         <div class="input-group">
