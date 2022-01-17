@@ -21,9 +21,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "${FINGERPRINT_KEY}"
-      - restore_cache:
-          keys:
-            - v1-npm-deps-
       - run:
           name: Exec deploy command
           command: |
