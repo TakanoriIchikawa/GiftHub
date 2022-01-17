@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Composer Packages
-          command: composer install
+          name: Echo Test
+          command: echo "Test"
   deploy:
     docker:
       - image: circleci/python:3.6
