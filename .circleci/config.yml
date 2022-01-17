@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Exec deploy command
           command: |
-            ssh -o "StrictHostKeyChecking=no" ${SSH_USER}@${SSH_HOST} "~/deploy.sh"
+            ssh ${SSH_USER}@${SSH_HOST} "~/deploy.sh"
 # コメントアウト
 workflows:
   version: 2
