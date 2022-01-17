@@ -4,9 +4,6 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.4-node-browsers
-    environment:
-      - DB_CONNECTION: circle_testing
-    working_directory: ~/current
     steps:
       - checkout
       - run:
