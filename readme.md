@@ -3,9 +3,6 @@
 貰ったポイントは好きな景品と交換できます。  
 https://production.gifthub-chiaki.com/  
 ※SPA構築のため、初期ローディングに時間を要します。
-| メールアドレス | パスワード |
-| ---- | ---- |
-| `chiaki0223@test.com` | `chiaki0223` |
 
 ![screencapture-gift-hub-dashboard-2021-06-30-05_04_28](https://user-images.githubusercontent.com/53390190/123860582-0c848a80-d961-11eb-98ee-eacc04a30cd6.png)
 
